@@ -13,7 +13,7 @@
                 <h1>KYbrary</h1>
             </div>
             <div class="menuItem">
-                <img src="https://imgs.search.brave.com/XCVIkZkF-xCwczplFgnjBZnX1wfkN7MD-6227b_sH20/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9jZG4u/aWNvbnNjb3V0LmNv/bS9pY29uL3ByZW1p/dW0vcG5nLTI1Ni10/aHVtYi9tZW51LWlj/b24tc3ZnLWRvd25s/b2FkLXBuZy0yMDQw/NDUucG5nP2Y9d2Vi/cCZ3PTEyOA" alt="" width="60px" height="60px">
+                <img src="icons/iconMenu.png" alt="" width="60px" height="60px">
             </div>
         </nav>
     </header>
@@ -22,13 +22,55 @@
         <section id="introduction">
             <article>
                 <h1>Bienvenido a KYbrary</h1>
+                <hr>
+                <p>El sistema bibliotecario definitivo, <br>simple pero eficiente, <br>ligero pero potente.</p>
+            </article>
+
+            <article class="cardApply">
+                <!-- Incluir borde animado -->
+                <div>
+                    <p>
+                        ¡Pruebelo ahora!
+                        Pongase en contacto
+                        con nuestro equipo
+                        y agende una demo
+                        ahora mismo.                        
+                    </p>
+                    <button>Mas informacion</button>
+                </div>
+            </article>
+        </section>
+
+        <section id="KYdeepdiving">
+            <article class="cardBook">
+                <div>
+                    <img src="icons/book.png" alt="">
+                </div>
+                <h2>Titulo</h2>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi, natus?</p>
+            </article>
+
+            <article class="cardBook">
+                <div>
+                    <img src="icons/book.png" alt="">
+                </div>
+                <h2>Titulo</h2>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Distinctio, reiciendis!</p>
+            </article>
+
+            <article class="cardBook">
+                <div>
+                    <img src="icons/book.png" alt="">
+                </div>
+                <h2>Titulo</h2>
+                <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quaerat, repellat?</p>
             </article>
         </section>
     </main>
 
     <footer>
-        <p>Copyright &copy;2026 KYbrary Todos los derechos reservados</p>
-        <p>Contacto: a.alfaro@liceorbl.cl</p>
+        <p>Copyright &copy;2026 <a href="nosotros.php">Waos Company</a> Todos los derechos reservados</p>
+        <p>Contacto: a.alfarogonzalez@liceorbl.cl</p>
     </footer>
 </body>
 </html>

@@ -1,8 +1,14 @@
+@import url('https://fonts.googleapis.com/css2?family=Story+Script&display=swap');
+
 :root {
     color-scheme: dark;
 
     --azul_neon: #4D4DFF;
     --gris_plata: #b1b1b1;    
+}
+
+html {
+    font-size: 62.5%;
 }
 
 * {
@@ -12,7 +18,7 @@
 }
 
 body {
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-family: "Story Script", sans-serif;
     color: var(--gris_plata);
     min-height: 100vh;
 
@@ -22,15 +28,19 @@ body {
 
 nav {
     background-color: var(--azul_neon);
-    padding: 10px;
+    padding: 1rem;
 
     display: grid;
     grid-template-columns: 90% 10%;
 }
 
+nav h1 {
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
 .pageTitle {
-    font-size: 40px;
-    letter-spacing: 8px;
+    font-size: 4rem;
+    letter-spacing: 0.8rem;
 }
 
 .menuItem {
@@ -39,16 +49,135 @@ nav {
     align-items: center;
 }
 
+/* Inicio de la introduccion */
 #introduction {
-    margin: 10px auto;
-    width: 80vw;
-    text-align: center;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
 
-    animation: apparition 0.4s ease-in;
+    margin: 2rem auto 0rem;
+    width: 80vw;
+
+    animation: apparition 0.5s ease-out;
+}
+
+article h1 {
+    font-size: 7.8rem;
+}
+
+article p {
+    font-size: 3.8rem;
+}
+
+.cardApply {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.cardApply div {
+    width: 50%;
+    text-align: center;
+    padding: 0.8rem 1.2rem;
+    background-color: #4d4dff33;
+    border: var(--azul_neon) 4px solid;
+    border-radius: 0.8rem;
+    animation: apparition 0.8s ease-out;
+}
+
+.cardApply p {
+    margin: 0.8rem;
+    font-size: 3.4rem;
+    color: #FFF;
+}
+
+.cardApply button {
+    margin: 0.8rem auto;
+    cursor: pointer;
+    font-size: 2rem;
+    padding: 1rem;
+    border-radius: 0.4rem;
+    border: none;
+    background-color: var(--azul_neon);
+    transition: background-color 0.7s ease-out;
+}
+
+.cardApply button:hover {
+    background-color: #2b97fa;
+}
+/* Fin de la introduccion */
+
+/* contenido principal */
+#KYdeepdiving {
+    width: 80vw;
+    padding: 1.2rem;
+    margin: 5rem auto 2rem;
+
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-direction: row;
+}
+
+#KYdeepdiving article:nth-child(1) {
+    animation: entranceVer 0.6s ease-out;
+}
+
+#KYdeepdiving article:nth-child(2) {
+    animation: entranceVer 0.8s ease-out;
+}
+
+#KYdeepdiving article:nth-child(3) {
+    animation: entranceVer 1s ease-out;
+}
+
+.cardBook {
+    width: 20%;
+    padding: 0.8rem;
+    border: var(--azul_neon) 2px solid;
+    text-align: center;
+    border-radius: 1rem;
+}
+
+.cardBook div { 
+    background-color: #30303060;
+    border-radius: 0.4rem;
+}
+
+.cardBook div:hover {
+    transform: scale(1.08);
+    transition: transform 0.5s ease-out;
+}
+
+.cardBook h2 {
+    font-size: 3rem;
+}
+
+.cardBook p {
+    font-size: 2rem;
+}
+
+.cardBook img {
+    width: 12rem;
+    height: 10rem;
+}
+
+/*Fin del contenido principal*/
+
+hr {
+    border: none;
+    height: 1rem;
+    text-align: center;
 }
 
 footer {
-    padding: 8px;
+    width: 80vw;
+    margin: auto;
+    border-radius: 1.5rem;
+
+    padding: 0.8rem;
+    font-size: 2.2rem;
     background-color: var(--azul_neon);
     text-align: center;
 }
@@ -57,11 +186,20 @@ footer {
     from {
         filter: blur(1px);
         opacity: 0.2;
-        transform: translateX(-140px);
+        transform: translateX(-440px);
     }
     to {
         filter: blur(0px);
         opacity: 1;
         transform: translateX(0px);
+    }
+}
+
+@keyframes entranceVer {
+    from {
+        transform: translateY(320px);
+    }
+    to {
+        transform: translateY(0px);
     }
 }
