@@ -43,6 +43,10 @@ nav h1 {
     letter-spacing: 0.8rem;
 }
 
+.pageTitle a {
+    text-decoration: none;
+}
+
 .menuItem {
     display: flex;
     justify-content: center;

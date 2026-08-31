@@ -1,5 +1,65 @@
+@import url('https://fonts.googleapis.com/css2?family=Story+Script&display=swap');
+
+:root {
+    color-scheme: dark;
+
+    --azul_neon: #4D4DFF;
+    --gris_plata: #b1b1b1;    
+}
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+}
+
+html {
+    font-size: 62.5%;
+}
+
+body {
+    font-family: "Story Script", sans-serif;
+    color: var(--gris_plata);
+    
+    min-height: 100vh;
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+}
+
+nav {
+    background-color: var(--azul_neon);
+    padding: 1rem;
+
+    display: grid;
+    grid-template-columns: 90% 10%;
+}
+
+nav h1 {
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+.pageTitle {
+    font-size: 4rem;
+    letter-spacing: 0.8rem;
+}
+
+.pageTitle a {
+    text-decoration: none;
+}
+
+.menuItem {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+footer {
+    width: 80vw;
+    margin: auto;
+    border-radius: 1.5rem;
+
+    padding: 0.8rem;
+    font-size: 2.2rem;
+    background-color: var(--azul_neon);
+    text-align: center;
 }

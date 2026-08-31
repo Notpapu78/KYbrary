@@ -7,6 +7,26 @@
     <title>Catalogo - KYbrary</title>
 </head>
 <body>
-    
+    <header>
+        <nav>
+            <div class="pageTitle">
+                <h1><a href="index.php">KYbrary</a></h1>
+            </div>
+            <div class="menuItem">
+                <img src="icons/iconMenu.png" alt="" width="60px" height="60px">
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section class="intro">
+            <article></article>
+        </section>
+    </main>
+
+    <footer>
+        <p>Copyright &copy;2026 <a href="nosotros.php">Waos Company</a> Todos los derechos reservados</p>
+        <p>Contacto: a.alfarogonzalez@liceorbl.cl</p>
+    </footer>
 </body>
 </html>

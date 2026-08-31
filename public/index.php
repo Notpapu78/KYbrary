@@ -10,7 +10,7 @@
     <header>
         <nav>
             <div class="pageTitle">
-                <h1>KYbrary</h1>
+                <h1><a href="#">KYbrary</a></h1>
             </div>
             <div class="menuItem">
                 <img src="icons/iconMenu.png" alt="" width="60px" height="60px">
@@ -36,7 +36,7 @@
                         y agende una demo
                         ahora mismo.                        
                     </p>
-                    <button>Mas informacion</button>
+                    <a href="catalogo.php"><button>Mas informacion</button></a>
                 </div>
             </article>
         </section>
