@@ -26,6 +26,7 @@ body {
     grid-template-rows: auto 1fr auto;
 }
 
+/* Nav */
 nav {
     background-color: var(--azul_neon);
     padding: 1rem;
@@ -43,14 +44,59 @@ nav h1 {
     letter-spacing: 0.8rem;
 }
 
-.pageTitle a {
+a {
     text-decoration: none;
+    color: #d0adf0;
 }
 
 .menuItem {
     display: flex;
     justify-content: center;
     align-items: center;
+}
+/*Nav*/
+
+#bookScroller {
+    width: 90vw;
+    background-color: aqua;
+    margin: 4rem auto;
+}
+
+.searcher {
+    background-color: #4D4DFF;
+    padding: 0.4rem 1rem;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.searcher h1 {
+    font-size: 4rem;
+    letter-spacing: 0.4rem;
+}
+
+label {
+    display: flex;
+    align-items: center;
+}
+
+label input {
+    padding: 0.8rem;
+    font-size: 2rem;
+    border-radius: 0.6rem;
+    border: none;
+    outline: none;
+}
+
+label img {
+    width: 4.2rem;
+    height: 4.2em;
+}
+
+hr {
+    border: none;
+    height: 4rem;
 }
 
 footer {

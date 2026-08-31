@@ -43,8 +43,9 @@ nav h1 {
     letter-spacing: 0.8rem;
 }
 
-.pageTitle a {
+a {
     text-decoration: none;
+    color: #d0adf0;
 }
 
 .menuItem {
@@ -110,6 +111,7 @@ article p {
 }
 /* Fin de la introduccion */
 
+
 /* contenido principal */
 #KYdeepdiving {
     width: 80vw;
@@ -129,11 +131,11 @@ article p {
 }
 
 #KYdeepdiving article:nth-child(2) {
-    animation: entranceVer 0.8s ease-out;
+    animation: entranceVer 0.75s ease-out;
 }
 
 #KYdeepdiving article:nth-child(3) {
-    animation: entranceVer 1s ease-out;
+    animation: entranceVer 0.9s ease-out;
 }
 
 .cardBook {

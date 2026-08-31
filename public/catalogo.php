@@ -12,15 +12,27 @@
             <div class="pageTitle">
                 <h1><a href="index.php">KYbrary</a></h1>
             </div>
-            <div class="menuItem">
-                <img src="icons/iconMenu.png" alt="" width="60px" height="60px">
-            </div>
+            <div class="menuItll">
         </nav>
     </header>
 
     <main>
-        <section class="intro">
-            <article></article>
+        <section id="bookScroller">
+            <article class="searcher">
+                <h1>Catalogo</h1>
+                <label for="">
+                    <img src="icons/magnifyingGlass.png" alt="">
+                    <input type="text" placeholder="Nombre del libro...">
+                </label>
+                
+            </article>
+            <hr>
+            <article class="bookLibrary">
+                <div class="cBooK"></div>
+                <div class="cBooK"></div>
+                <div class="cBooK"></div>
+                <div class="cBooK"></div>
+            </article>
         </section>
     </main>
 
