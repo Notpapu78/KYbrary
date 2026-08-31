@@ -12,7 +12,9 @@
             <div class="pageTitle">
                 <h1><a href="index.php">KYbrary</a></h1>
             </div>
-            <div class="menuItll">
+            <div class="menuItem">
+                <img src="icons/iconMenu.png" alt="" width="60px" height="60px">
+            </div>
         </nav>
     </header>
 
@@ -28,10 +30,42 @@
             </article>
             <hr>
             <article class="bookLibrary">
-                <div class="cBooK"></div>
-                <div class="cBooK"></div>
-                <div class="cBooK"></div>
-                <div class="cBooK"></div>
+
+                <div class="cBook">
+                    <img src="icons/book.png" alt="">
+                    <h1>Titulo</h1>
+                    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Adipisci, deserunt?</p>
+                </div>
+
+                <div class="cBook">
+                    <img src="icons/book.png" alt="">
+                    <h1>Titulo</h1>
+                    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Adipisci, deserunt?</p>
+                </div>
+
+                <div class="cBook">
+                    <img src="icons/book.png" alt="">
+                    <h1>Titulo</h1>
+                    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Adipisci, deserunt?</p>
+                </div>
+
+                <div class="cBook">
+                    <img src="icons/book.png" alt="">
+                    <h1>Titulo</h1>
+                    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Adipisci, deserunt?</p>
+                </div>
+
+                <div class="cBook">
+                    <img src="icons/book.png" alt="">
+                    <h1>Titulo</h1>
+                    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Adipisci, deserunt?</p>
+                </div>
+
+                <div class="cBook">
+                    <img src="icons/book.png" alt="">
+                    <h1>Titulo</h1>
+                    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Adipisci, deserunt?</p>
+                </div>
             </article>
         </section>
     </main>

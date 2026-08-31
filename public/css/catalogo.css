@@ -58,13 +58,14 @@ a {
 
 #bookScroller {
     width: 90vw;
-    background-color: aqua;
+    border: var(--azul_neon) solid 2px;
     margin: 4rem auto;
+    border-radius: 0 0 1rem 1rem;
 }
 
 .searcher {
     background-color: #4D4DFF;
-    padding: 0.4rem 1rem;
+    padding: 0.4rem 2rem;
 
     display: flex;
     justify-content: space-between;
@@ -72,7 +73,7 @@ a {
 }
 
 .searcher h1 {
-    font-size: 4rem;
+    font-size: 4.5rem;
     letter-spacing: 0.4rem;
 }
 
@@ -92,6 +93,40 @@ label input {
 label img {
     width: 4.2rem;
     height: 4.2em;
+}
+
+.bookLibrary {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 2rem;    
+}
+
+.cBook {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+    width: 14%;
+    padding: 1rem;
+    border-radius: 0.8rem;
+    border: var(--azul_neon) 2px solid;
+}
+
+.cBook h1 {
+    font-size: 4.2rem;
+}
+
+.cBook p {
+    font-size: 2rem;
+}
+
+.cBook img {
+    width: 9rem;
+    height: 9rem;
 }
 
 hr {
