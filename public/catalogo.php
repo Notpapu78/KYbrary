@@ -1,3 +1,5 @@
+<?php require 'C:\Users\PROG\KYbrary\src\functions.php' ?>
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -30,42 +32,11 @@
             </article>
             <hr>
             <article class="bookLibrary">
-
-                <div class="cBook">
-                    <img src="icons/book.png" alt="">
-                    <h1>Titulo</h1>
-                    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Adipisci, deserunt?</p>
-                </div>
-
-                <div class="cBook">
-                    <img src="icons/book.png" alt="">
-                    <h1>Titulo</h1>
-                    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Adipisci, deserunt?</p>
-                </div>
-
-                <div class="cBook">
-                    <img src="icons/book.png" alt="">
-                    <h1>Titulo</h1>
-                    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Adipisci, deserunt?</p>
-                </div>
-
-                <div class="cBook">
-                    <img src="icons/book.png" alt="">
-                    <h1>Titulo</h1>
-                    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Adipisci, deserunt?</p>
-                </div>
-
-                <div class="cBook">
-                    <img src="icons/book.png" alt="">
-                    <h1>Titulo</h1>
-                    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Adipisci, deserunt?</p>
-                </div>
-
-                <div class="cBook">
-                    <img src="icons/book.png" alt="">
-                    <h1>Titulo</h1>
-                    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Adipisci, deserunt?</p>
-                </div>
+                <?php
+                    for ($i = 0; $i < 18; $i++){
+                        renderBooks();
+                    }
+                ?>
             </article>
         </section>
     </main>
