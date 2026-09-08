@@ -41,31 +41,65 @@
             </article>
         </section>
 
-        <section id="KYdeepdiving">
-            <article class="cardBook">
-                <div>
-                    <img src="icons/book.png" alt="">
-                </div>
-                <h2>Titulo</h2>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi, natus?</p>
-            </article>
+        <section id="tendencyBooks">
+            <h2>Libros en tendencia</h2>
+            <div class="book-wrapper">
+                <article class="cardBook">
+                    <div>
+                        <img src="icons/book.png" alt="">
+                    </div>
+                    <h2>Titulo</h2>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi, natus?</p>
+                </article>
 
-            <article class="cardBook">
-                <div>
-                    <img src="icons/book.png" alt="">
-                </div>
-                <h2>Titulo</h2>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Distinctio, reiciendis!</p>
-            </article>
+                <article class="cardBook">
+                    <div>
+                        <img src="icons/book.png" alt="">
+                    </div>
+                    <h2>Titulo</h2>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Distinctio, reiciendis!</p>
+                </article>
 
-            <article class="cardBook">
-                <div>
-                    <img src="icons/book.png" alt="">
-                </div>
-                <h2>Titulo</h2>
-                <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quaerat, repellat?</p>
-            </article>
+                <article class="cardBook">
+                    <div>
+                        <img src="icons/book.png" alt="">
+                    </div>
+                    <h2>Titulo</h2>
+                    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quaerat, repellat?</p>
+                </article>
+            </div>
         </section>
+
+        <section id="recentBooks">
+            <h2>Nuestros libros mas recientes</h2>
+            <div class="book-wrapper">
+                <article class="cardBook">
+                    <div>
+                        <img src="icons/book.png" alt="">
+                    </div>
+                    <h2>Titulo</h2>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi, natus?</p>
+                </article>
+
+                <article class="cardBook">
+                    <div>
+                        <img src="icons/book.png" alt="">
+                    </div>
+                    <h2>Titulo</h2>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Distinctio, reiciendis!</p>
+                </article>
+
+                <article class="cardBook">
+                    <div>
+                        <img src="icons/book.png" alt="">
+                    </div>
+                    <h2>Titulo</h2>
+                    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quaerat, repellat?</p>
+                </article>
+            </div>
+        </section>
+
+        <section></section>
     </main>
 
     <footer>

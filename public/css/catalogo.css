@@ -118,7 +118,7 @@ label img {
     flex-direction: column;
 
     width: 14%;
-    padding: 1rem;
+    padding: 0.8rem;
     border-radius: 0.8rem;
     border: var(--azul_neon) 2px solid;
 }
