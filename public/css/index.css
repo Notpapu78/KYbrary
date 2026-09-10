@@ -153,8 +153,10 @@ article p {
     width: 20%;
     padding: 0.8rem;
     border: var(--azul_neon) 2px solid;
+    background-color: rgb(0, 0, 0);
     text-align: center;
     border-radius: 1rem;
+    position: relative;
 }
 
 .cardBook div { 
@@ -188,7 +190,48 @@ article p {
     border: var(--rojo) 2px solid;
 }
 
+#recentBooks article:nth-child(1) {
+    animation: entranceR 1s ease-in-out;
+}
+
+#recentBooks article:nth-child(2) {
+    animation: entranceR 1.5s ease-in-out;
+}
+
+#recentBooks article:nth-child(3) {
+    animation: entranceR 2s ease-in-out;
+}
+
 /*Fin del contenido principal*/
+
+/**/
+
+@property --angles {
+    syntax: "<angle>";
+    initial-value: 0deg;
+    inherits: false;
+}
+
+.cardBook::after, .cardBook::before {
+    content: '';
+    position: absolute;
+    inset: -6px;
+    background-image: conic-gradient(from var(--angles), var(--gris_plata), #00000042, var(--azul_neon), #00000042, var(--gris_plata));
+    animation: borderSpin 2.4s linear infinite;
+    z-index: -1;
+    border-radius: 1rem;
+}
+
+@keyframes borderSpin {
+    from {
+        --angles: 0deg;
+    }
+    to {
+        --angles: 360deg;
+    }
+}
+
+/**/
 
 hr {
     border: none;
@@ -224,7 +267,10 @@ footer {
     from {
         transform: translateY(320px);
     }
-    to {
-        transform: translateY(0px);
+}
+
+@keyframes entranceR {
+    from {
+        transform: translateX(400px);
     }
 }
