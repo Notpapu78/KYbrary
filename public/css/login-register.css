@@ -3,7 +3,7 @@ body {
     justify-content: center;
     align-items: center;
 
-    background-image: url(../media/2.avif);
+    background-image: url(../media/new.png);
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -72,7 +72,7 @@ input::placeholder {
 }
 
 #login-form button[type="submit"]:hover {
-    background-color: var(--azul_neon);
+    background-color: rgba(255, 255, 255, 0.301);
 }
 
 #login-form .google-btn {

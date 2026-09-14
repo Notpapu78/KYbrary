@@ -40,6 +40,52 @@ nav h1 {
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 
+.pageTitle {
+    font-size: 4rem;
+    letter-spacing: 0.8rem;
+    padding: 0 2rem;
+
+    display: flex;
+    justify-content: space-between;
+}
+
+.pageTitle div {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.pageTitle button {
+    cursor: pointer;
+    border: var(--gris_plata) 0.2rem solid;
+    background-color: rgba(255, 255, 255, 0.205);
+    font-size: 20px;
+    padding: 1.2rem;
+    border-radius: 1rem;
+
+    transition: background-color 0.5s ease-out;
+}
+
+.pageTitle button:hover {
+    background-color: #4D4DFF;
+}
+
+.pageTitle a {
+    color: currentColor;
+    text-decoration: none;
+}
+
+a {
+    text-decoration: none;
+    color: #d0adf0;
+}
+
+.menuItem {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 hr {
     border: none;
     height: 1rem;
@@ -72,31 +118,27 @@ footer {
     text-align: center;
 }
 
-/**/
-
-/* @property --angles {
-    syntax: "<angle>";
-    initial-value: 0deg;
-    inherits: false;
-}
-
-.cardBook::after, .cardBook::before {
-    content: '';
-    position: absolute;
-    inset: -6px;
-    background-image: conic-gradient(from var(--angles), var(--gris_plata), #00000042, var(--azul_neon), #00000042, var(--gris_plata));
-    animation: borderSpin 2.4s linear infinite;
-    z-index: -1;
-    border-radius: 1rem;
-}
-
-@keyframes borderSpin {
+@keyframes apparition {
     from {
-        --angles: 0deg;
+        filter: blur(1px);
+        opacity: 0.2;
+        transform: translateX(-440px);
     }
     to {
-        --angles: 360deg;
+        filter: blur(0px);
+        opacity: 1;
+        transform: translateX(0px);
     }
-} */
+}
 
-/**/
+@keyframes entranceVer {
+    from {
+        transform: translateY(320px);
+    }
+}
+
+@keyframes entranceR {
+    from {
+        transform: translateX(400px);
+    }
+}
