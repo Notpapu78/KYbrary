@@ -46,9 +46,9 @@
                 <button type="submit">Registrarse</button>
                 <hr>
 
-                <p style="text-align: center; margin-top: 1rem;">
-                    <a href="login.php" style="color: var(--gris_plata); text-decoration: none;">¿Ya tienes cuenta? Inicia sesión</a>
-                </p>
+                <div>
+                    <span>¿Ya tienes cuenta? <a href="login.php">Inicia sesión</a></span>
+                </div>
             </form>
         </section>
     </main>

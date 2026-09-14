@@ -160,7 +160,7 @@ input::placeholder {
     font-size: 1.8rem;
     margin: 3.2rem auto 2rem;
     padding: 1rem;
-    width: 90%;
+    width: 60%;
     cursor: pointer;
     color: whitesmoke;
     transition: all 0.5s ease-in-out;
@@ -168,4 +168,13 @@ input::placeholder {
 
 #register-form button[type="submit"]:hover {
     background-color: rgba(255, 255, 255, 0.301);
+}
+
+#register-form div {
+    text-align: center;
+}
+
+#register-form span, #register-form div a {
+    font-size: 2rem;
+    color: white;
 }
