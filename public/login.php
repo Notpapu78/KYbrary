@@ -5,27 +5,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/common.css">
     <link rel="stylesheet" href="css/login-register.css">
-    <title>Document</title>
+    <title>Iniciar Sesión - KYbrary</title>
     <script src="https://accounts.google.com/gsi/client" async defer></script>
 </head>
 <body>
     <main>
         <section id="login-form">
-            <form action="">
+            <form action="process_login.php" method="POST">
                 <h1>Iniciar Sesión</h1>
                 
                 <fieldset class="input-box">
-                    <input type="email" id="user-email" placeholder="Correo electrónico">
+                    <input type="email" id="user-email" name="email" placeholder="Correo electrónico" required>
                     <i class="ri-user-fill"></i>
                 </fieldset>
                 
                 <fieldset class="input-box">
-                    <input type="password" id="user-password" placeholder="Contraseña">
+                    <input type="password" id="user-password" name="password" placeholder="Contraseña" required>
                     <i class="ri-lock-fill"></i>
                 </fieldset>
 
                 <hr>
-                <button type="submit">Submit</button>
+                <button type="submit">Ingresar</button>
                 <hr>
                 
                 <div id="g_id_onload"

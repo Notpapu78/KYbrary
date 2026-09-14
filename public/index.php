@@ -1,4 +1,7 @@
-<?php include '../src/functions.php'; ?>
+<?php 
+session_start();
+include '../src/functions.php'; 
+?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -15,8 +18,15 @@
                 <h1><a href="#">KYbrary</a></h1>
 
                 <div>
-                    <a href="register.php"><button>Registrarse</button></a>
-                    <a href="login.php"><button>Iniciar Sesion</button></a>
+                    <?php if (isset($_SESSION['user_name'])): ?>
+                        <span style="color: whitesmoke; margin-right: 12px;">
+                            Hola, <?php echo htmlspecialchars($_SESSION['user_name']); ?>
+                        </span>
+                        <a href="logout.php"><button>Cerrar Sesión</button></a>
+                    <?php else: ?>
+                        <a href="register.php"><button>Registrarse</button></a>
+                        <a href="login.php"><button>Iniciar Sesion</button></a>
+                    <?php endif; ?>
                 </div>
             </div>
             <div class="menuItem">
@@ -36,7 +46,6 @@
             </article>
 
             <article class="cardApply">
-                <!-- Incluir borde animado -->
                 <div>
                     <p>
                         ¡Pruebelo ahora!

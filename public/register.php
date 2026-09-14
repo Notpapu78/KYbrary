@@ -5,46 +5,50 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/common.css">
     <link rel="stylesheet" href="css/login-register.css">
-    <title>Register</title>
-    <script src="https://accounts.google.com/gsi/client" async defer></script>
+    <title>Registrarse - KYbrary</title>
 </head>
 <body>
     <main>
         <section id="register-form">
-            <form action="">
-                <h1>Register</h1>
-                
+            <form action="process_register.php" method="POST">
+                <h1>Registrarse</h1>
+
                 <fieldset class="input-box rut-container">
-                    <input type="text" placeholder="Rut: 22941087" maxlength="8" class="rut-input-body">
+                    <input type="text" class="rut-input-body" id="rut_body" name="rut_body" placeholder="RUT" required>
                     <span class="rut-hyphen">-</span>
-                    <input type="text" placeholder="3" maxlength="1" class="rut-input-dv">
-                </fieldset>
-                
-                <fieldset class="input-box">
-                    <input type="email" placeholder="Correo electrónico">
-                </fieldset>
-                
-                <fieldset class="input-box">
-                    <input type="password" placeholder="Contraseña">
+                    <input type="text" class="rut-input-dv" id="rut_dv" name="rut_dv" maxlength="1" placeholder="DV" required>
                 </fieldset>
 
+                <fieldset class="input-box">
+                    <input type="text" id="name" name="name" placeholder="Nombres" required>
+                </fieldset>
+
+                <fieldset class="input-box">
+                    <input type="text" id="surname" name="surname" placeholder="Apellidos" required>
+                </fieldset>
+
+                <fieldset class="input-box">
+                    <input 
+                        type="email" 
+                        id="email" 
+                        name="email" 
+                        placeholder="Correo electrónico (@liceorbl.cl)" 
+                        pattern=".+@liceorbl\.cl" 
+                        title="Debes ingresar un correo con dominio @liceorbl.cl" 
+                        required>
+                </fieldset>
+
+                <fieldset class="input-box">
+                    <input type="password" id="password" name="password" placeholder="Contraseña" required>
+                </fieldset>
+
+                <hr>
                 <button type="submit">Registrarse</button>
                 <hr>
-                
-                <div id="g_id_onload"
-                    data-client_id="TU_CLIENT_ID_DE_GOOGLE.apps.googleusercontent.com"
-                    data-login_uri="https://tusitio.com/tu_backend_de_login.php"
-                    data-auto_prompt="false">
-                </div>
-                
-                <div class="g_id_signin"
-                    data-type="standard"
-                    data-shape="pill"
-                    data-theme="outline"
-                    data-text="signin_with"
-                    data-size="large"
-                    data-locale="es">
-                </div>
+
+                <p style="text-align: center; margin-top: 1rem;">
+                    <a href="login.php" style="color: var(--gris_plata); text-decoration: none;">¿Ya tienes cuenta? Inicia sesión</a>
+                </p>
             </form>
         </section>
     </main>

@@ -29,7 +29,6 @@ nav {
 
 body {
     font-family: "Story Script", sans-serif;
-    color: var(--gris_plata);
     min-height: 100vh;
 
     display: grid;

@@ -1,11 +1,8 @@
-//futuras cosas
-//Empiezan ahora
-
 <?php
-$host = "localhost";
+$host = "127.0.0.1";
 $port = "5432";
-$user = "STUDING";
-$dbname = "Testing";
+$user = "waos";
+$dbname = "test_yuyito";
 $password = "022009";
 
 try {
