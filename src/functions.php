@@ -10,4 +10,18 @@ function renderBooks() {
     <?php
 }
 
+function renderSidebar() {
+    ?>
+    <div class="main-app-container">
+        <aside class="sidebar" id="sidebar">
+            <div class="nav-links">
+                <a href="#" class="nav-item"><span>🏠</span> Inicio</a>
+                <a href="#" class="nav-item"><span>⏱️</span> Ver más tarde</a>
+                <a href="#" class="nav-item"><span>📂</span> Playlists</a>
+            </div>
+        </aside>
+    </div>
+    <?php
+}
+
 ?>

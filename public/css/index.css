@@ -1,47 +1,36 @@
-@import url('https://fonts.googleapis.com/css2?family=Story+Script&display=swap');
-
-:root {
-    color-scheme: dark;
-
-    --rojo: #ff2c2c;
-    --azul_neon: #4D4DFF;
-    --gris_plata: #b1b1b1;    
-}
-
-html {
-    font-size: 62.5%;
-}
-
-* {
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
-}
-
-body {
-    font-family: "Story Script", sans-serif;
-    color: var(--gris_plata);
-    min-height: 100vh;
-
-    display: grid;
-    grid-template-rows: auto 1fr auto;
-}
-
-nav {
-    background-color: var(--azul_neon);
-    padding: 1rem;
-
-    display: grid;
-    grid-template-columns: 90% 10%;
-}
-
-nav h1 {
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-}
-
 .pageTitle {
     font-size: 4rem;
     letter-spacing: 0.8rem;
+    padding: 0 2rem;
+
+    display: flex;
+    justify-content: space-between;
+}
+
+.pageTitle div {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.pageTitle button {
+    cursor: pointer;
+    border: var(--gris_plata) 0.2rem solid;
+    background-color: rgba(255, 255, 255, 0.205);
+    font-size: 20px;
+    padding: 1.2rem;
+    border-radius: 1rem;
+
+    transition: background-color 0.5s ease-out;
+}
+
+.pageTitle button:hover {
+    background-color: #4D4DFF;
+}
+
+.pageTitle a {
+    color: currentColor;
+    text-decoration: none;
 }
 
 a {
@@ -98,11 +87,9 @@ article p {
 
 .cardApply button {
     margin: 0.8rem auto;
-    cursor: pointer;
     font-size: 2rem;
     padding: 1rem;
     border-radius: 0.4rem;
-    border: none;
     background-color: var(--azul_neon);
     transition: background-color 0.7s ease-out;
 }
@@ -204,51 +191,45 @@ article p {
 
 /*Fin del contenido principal*/
 
-/**/
+#literaryGenres {
+    width: 90vw;
+    height: auto;
+    margin: 10rem auto 4rem;
 
-@property --angles {
-    syntax: "<angle>";
-    initial-value: 0deg;
-    inherits: false;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    flex-wrap: wrap;
 }
 
-.cardBook::after, .cardBook::before {
-    content: '';
-    position: absolute;
-    inset: -6px;
-    background-image: conic-gradient(from var(--angles), var(--gris_plata), #00000042, var(--azul_neon), #00000042, var(--gris_plata));
-    animation: borderSpin 2.4s linear infinite;
-    z-index: -1;
-    border-radius: 1rem;
+#literaryGenres article:nth-child(1) {
+    background-color: red;
 }
 
-@keyframes borderSpin {
-    from {
-        --angles: 0deg;
-    }
-    to {
-        --angles: 360deg;
-    }
+#literaryGenres article:nth-child(2) {
+    background-color: green;
 }
 
-/**/
-
-hr {
-    border: none;
-    height: 1rem;
-    text-align: center;
+#literaryGenres article:nth-child(3) {
+    background-color: var(--morado);
 }
 
-footer {
-    width: 80vw;
+.cardGenre {
+    display: grid;
+    place-content: center;
+
+    width: 20vw;
+    height: 20vh;
     margin: auto;
-    border-radius: 1.5rem;
-
-    padding: 0.8rem;
-    font-size: 2.2rem;
-    background-color: var(--azul_neon);
-    text-align: center;
+    border-radius: 1rem;
+    padding: 0.6rem;
 }
+
+.cardGenre h3 {
+    font-size: 4rem;
+}
+
+/**/
 
 @keyframes apparition {
     from {
@@ -273,4 +254,84 @@ footer {
     from {
         transform: translateX(400px);
     }
+}
+
+/*Side Bar*/
+
+.main-app-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.sidebar {
+    position: fixed;
+    top: 0;
+    right: 0;
+    height: 100vh;
+    width: 24rem;
+    background-color: #212121;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    z-index: 1000;
+    
+    /*Ocultandolo a la derecha*/
+    transform: translateX(100%);
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.sidebar.open {
+    transform: translateX(0);
+}
+
+.menu-btn {
+    background-color: rgba(255, 255, 255, 0.205);
+    border: var(--gris_plata) 0.2rem solid;
+    color: #fff;
+    font-size: 20px;
+    padding: 1.2rem;
+    border-radius: 1rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    transition: background-color 0.5s ease-out;
+}
+
+.menu-btn:hover {
+    background-color: #4D4DFF;
+}
+
+.nav-links {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 40px;
+    font-size: 2.4rem;
+}
+
+.nav-item {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    color: #fff;
+    text-decoration: none;
+    padding: 10px;
+    border-radius: 8px;
+}
+
+.nav-item:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.main-content {
+    width: 100%;
+    height: 100%;
+    padding: 20px;
+    padding-top: 70px;
+    background-color: #181818;
+    position: relative;
+    z-index: 1;
 }
