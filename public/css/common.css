@@ -1,0 +1,143 @@
+@import url('https://fonts.googleapis.com/css2?family=Story+Script&display=swap');
+
+:root {
+    --morado: #9d00ff;
+    --rojo: #5C1D24;
+    --gris_plata: #E5E5E5;
+    --carmesi: #b10e0e;
+}
+
+html {
+    font-size: 62.5%;
+}
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+nav {
+    background-color: var(--rojo);
+    border: var(--carmesi) 0.2rem solid;
+    padding: 1rem;
+
+    display: grid;
+    grid-template-columns: 90% 10%;
+}
+
+body {
+    font-family: "Story Script", sans-serif;
+    min-height: 100vh;
+
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+}
+
+nav h1 {
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+.pageTitle {
+    font-size: 4rem;
+    letter-spacing: 0.8rem;
+    padding: 0 2rem;
+
+    display: flex;
+    justify-content: space-between;
+}
+
+.pageTitle div {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.pageTitle button {
+    cursor: pointer;
+    border: var(--gris_plata) 0.2rem solid;
+    background-color: rgba(255, 255, 255, 0.205);
+    color: white;
+    font-size: 2rem;
+    padding: 1.2rem;
+    border-radius: 1rem;
+
+    transition: background-color 0.5s ease-out;
+}
+
+.pageTitle button:hover {
+    background-color: var(--rojo);
+}
+
+.pageTitle a {
+    color: currentColor;
+    text-decoration: none;
+}
+
+a {
+    text-decoration: none;
+    color: #d0adf0;
+}
+
+.menuItem {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+hr {
+    border: none;
+    height: 1rem;
+    text-align: center;
+}
+
+button {
+    cursor: pointer;
+    border: none;
+}
+
+fieldset {
+    border: none;
+}
+
+input {
+    border: none;
+    background-color: transparent;
+    outline: none;
+}
+
+footer {
+    width: 80vw;
+    margin: auto;
+    border-radius: 1.5rem;
+
+    padding: 0.8rem;
+    font-size: 2.2rem;
+    background-color: var(--rojo);
+    text-align: center;
+}
+
+@keyframes apparition {
+    from {
+        filter: blur(1px);
+        opacity: 0.2;
+        transform: translateX(-440px);
+    }
+    to {
+        filter: blur(0px);
+        opacity: 1;
+        transform: translateX(0px);
+    }
+}
+
+@keyframes entranceVer {
+    from {
+        transform: translateY(320px);
+    }
+}
+
+@keyframes entranceR {
+    from {
+        transform: translateX(400px);
+    }
+}

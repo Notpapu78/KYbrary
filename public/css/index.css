@@ -1,0 +1,218 @@
+/* Inicio de la introduccion */
+body {
+    background-image: url(../media/a.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+
+    color: white;
+    backdrop-filter: blur(14px);
+}
+
+#introduction {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+
+    margin: 2rem auto 0rem;
+    width: 80vw;
+
+    animation: apparition 0.5s ease-out;
+}
+
+article h1 {
+    font-size: 7.8rem;
+}
+
+article p {
+    font-size: 3.8rem;
+}
+
+.cardApply {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.cardApply div {
+    width: 50%;
+    text-align: center;
+    padding: 0.8rem 1.2rem;
+    border: var(--azul_neon) 4px solid;
+    border-radius: 0.8rem;
+    animation: apparition 0.8s ease-out;
+}
+
+.cardApply p {
+    margin: 0.8rem;
+    font-size: 3.4rem;
+    color: #FFF;
+}
+
+.cardApply button {
+    margin: 0.8rem auto;
+    font-size: 2rem;
+    padding: 1rem;
+    border-radius: 0.4rem;
+    background-color: rgba(255, 255, 255, 0.205);
+    color: white;
+    border: var(--gris_plata) 0.2rem solid;
+    transition: background-color 0.7s ease-out;
+}
+
+.cardApply button:hover {
+    background-color: var(--rojo);
+}
+/* Fin de la introduccion */
+
+
+/* contenido principal */
+#tendencyBooks, #recentBooks {
+    width: 80vw;
+    padding: 1.2rem;
+    margin: 6rem auto 4rem;
+
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+#tendencyBooks > h2, #recentBooks > h2 {
+    margin: 3rem 0 3rem 3rem;
+    font-size: 40px;
+    font-weight: bold;
+    font-style: italic;
+    animation: apparition 1s ease-in-out;
+}
+
+.book-wrapper {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-direction: row;
+}
+
+#tendencyBooks article:nth-child(1) {
+    animation: entranceVer 0.6s ease-out;
+}
+
+#tendencyBooks article:nth-child(2) {
+    animation: entranceVer 0.75s ease-out;
+}
+
+#tendencyBooks article:nth-child(3) {
+    animation: entranceVer 0.9s ease-out;
+}
+
+.cardBook {
+    width: 20%;
+    padding: 0.8rem;
+    border: var(--azul_neon) 2px solid;
+    text-align: center;
+    border-radius: 1rem;
+    position: relative;
+    backdrop-filter: blur(12px);
+}
+
+.cardBook div { 
+    background-color: #30303060;
+    border-radius: 0.4rem;
+    transition: all 0.5s ease-out;
+}
+
+.cardBook div:hover {
+    transform: scale(1.08);
+}
+
+.cardBook h2 {
+    font-size: 3rem;
+}
+
+.cardBook p {
+    font-size: 2rem;
+}
+
+.cardBook img {
+    width: 12rem;
+    height: 10rem;
+}
+
+#recentBooks > h2 {
+    animation: apparition 2s ease-in-out;
+}
+
+#recentBooks .cardBook {
+    border: var(--rojo) 2px solid;
+}
+
+#recentBooks article:nth-child(1) {
+    animation: entranceR 1s ease-in-out;
+}
+
+#recentBooks article:nth-child(2) {
+    animation: entranceR 1.5s ease-in-out;
+}
+
+#recentBooks article:nth-child(3) {
+    animation: entranceR 2s ease-in-out;
+}
+
+/*Fin del contenido principal*/
+
+#literaryGenres {
+    width: 90vw;
+    height: auto;
+    margin: 10rem auto 4rem;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+#literaryGenres article:nth-child(1) {
+    background-color: rgba(255, 255, 255, 0.400);
+}
+
+#literaryGenres article:nth-child(1):hover {
+    background-color: red;
+}
+
+
+#literaryGenres article:nth-child(2) {
+    background-color: rgba(255, 255, 255, 0.400);
+}
+
+#literaryGenres article:nth-child(2):hover {
+    background-color: green;
+}
+
+#literaryGenres article:nth-child(3) {
+    background-color: rgba(255, 255, 255, 0.400);
+}
+
+#literaryGenres article:nth-child(3):hover {
+    background-color: var(--morado);
+}
+
+.cardGenre {
+    display: grid;
+    place-content: center;
+
+    width: 20vw;
+    height: 20vh;
+    margin: auto;
+    border-radius: 1.2rem;
+    padding: 0.6rem;
+    transition: all 0.4s ease-in-out;
+}
+
+.cardGenre h3 {
+    font-size: 4rem;
+}
+
+.cardGenre:hover {
+    transform: translateY(-0.8rem);
+    transform: scale(1.01);
+    box-shadow: 0.7rem 0.7rem 7px rgba(0, 0, 0, 0.527);
+}
+
+/**/

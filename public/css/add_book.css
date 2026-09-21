@@ -1,0 +1,88 @@
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    margin: 0;
+
+    background-image: url(../media/new.png);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.main-content {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#add-book-form {
+    width: 25vw;
+    border: var(--gris_plata) 0.4rem solid;
+    backdrop-filter: blur(12px);
+    border-radius: 1rem;
+    animation: sessionAppa 0.7s ease-in-out;
+}
+
+h1 {
+    font-size: 5rem;
+    color: white;
+}
+
+input::placeholder {
+    color: white;
+}
+
+form {
+    text-align: center;
+    padding: 2rem;
+    border-radius: 1rem;
+}
+
+#add-book-form fieldset {
+    display: flex;
+    flex-direction: column;
+    margin-top: 2rem;
+}
+
+input {
+    color: white;
+    padding: 1rem;
+    border-radius: 1rem;
+    background-color: transparent;
+    border: 0.2rem solid var(--gris_plata);
+}
+
+select {
+    appearance: none;
+    -webkit-appearance: none;
+    width: 100%;
+    padding: 1.2rem;
+    font-size: 1.6rem;
+    border: var(--gris_plata) 0.2rem solid;
+    background: transparent;
+    color: white;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+option {
+    color: white;
+    background-color: #222;
+}
+
+button[type="submit"] {
+    width: 90%;
+    margin: auto;
+    padding: 1rem;
+    border-radius: 1rem;
+    background-color: transparent;
+    color: white;
+    font-size: 2rem;
+    border: var(--gris_plata) 0.2rem solid;
+    transition: all 0.8s ease-in-out;
+}
+
+button[type="submit"]:hover {
+    background-color: rgba(255, 255, 255, 0.301);
+}

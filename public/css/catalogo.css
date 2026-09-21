@@ -1,0 +1,107 @@
+body {
+    background-image: url(../media/bi.jpg);
+    color: white;
+    backdrop-filter: blur(12px);
+}
+
+/* Nav */
+
+.pageTitle {
+    font-size: 4rem;
+    letter-spacing: 0.8rem;
+}
+
+a {
+    text-decoration: none;
+    color: #d0adf0;
+}
+
+.menuItem {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+/*Nav*/
+
+#bookScroller {
+    width: 94vw;
+    border: var(--carmesi) solid 4px;
+    margin: 6rem auto 8rem;
+    border-radius: 0 0 1rem 1rem;
+}
+
+.searcher {
+    background-color: var(--carmesi);
+    padding: 0.4rem 2rem;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.searcher h1 {
+    font-size: 4.5rem;
+    letter-spacing: 0.4rem;
+}
+
+label {
+    display: flex;
+    align-items: center;
+}
+
+label input {
+    padding: 0.8rem;
+    font-size: 2rem;
+    border-radius: 0.6rem;
+    border: var(--rojo) 0.2rem solid;
+}
+
+label img {
+    width: 4.2rem;
+    height: 4.2em;
+}
+
+.bookLibrary {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: auto;
+    
+    height: 60vh;
+    gap: 2rem;
+    padding: 0 8px 16px;
+
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+
+.cBook {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+    width: 90%;
+    margin: auto;
+    padding: 1.2rem;
+    border-radius: 0.8rem;
+    border: var(--azul_neon) 2px solid;
+    background-color: rgba(0, 0, 0, 0.575);
+}
+
+.cBook h1 {
+    font-size: 4.2rem;
+}
+
+.cBook p {
+    font-size: 2rem;
+}
+
+.cBook img {
+    width: 9rem;
+    height: 9rem;
+}
+
+hr {
+    border: none;
+    height: 4rem;
+}
