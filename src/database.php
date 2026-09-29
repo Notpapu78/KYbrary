@@ -17,4 +17,3 @@ try {
     echo "Error de conexión: " . $e->getMessage();
 }
 ?>
-//waos YUYITO FINALIZOOOOO
