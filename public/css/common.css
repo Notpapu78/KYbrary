@@ -1,8 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Story+Script&display=swap');
 
 :root {
+    --cream: #FDFBD4;
     --morado: #9d00ff;
-    --rojo: #5C1D24;
     --gris_plata: #E5E5E5;
     --carmesi: #b10e0e;
 }
@@ -18,12 +18,16 @@ html {
 }
 
 nav {
-    background-color: var(--rojo);
     border: var(--carmesi) 0.2rem solid;
-    padding: 1rem;
+    background-color: #b10e0e5e;
+    padding: 1.2rem;
 
     display: grid;
     grid-template-columns: 90% 10%;
+}
+
+span {
+    font-size: 2.8rem;
 }
 
 body {
@@ -34,23 +38,37 @@ body {
     grid-template-rows: auto 1fr auto;
 }
 
-nav h1 {
+nav a {
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 
+.pageTitle, .menuItem {
+    background-color: #d6101070;
+}
+
 .pageTitle {
-    font-size: 4rem;
     letter-spacing: 0.8rem;
     padding: 0 2rem;
+    border-radius: 1rem 0 0 1rem;
 
     display: flex;
     justify-content: space-between;
+}
+
+.pageTitle span {
+    color: whitesmoke;
+    margin-right: 1.2rem;
 }
 
 .pageTitle div {
     display: flex;
     align-items: center;
     gap: 1rem;
+}
+
+.pageTitle div a {
+    display: flex;
+    align-items: center;
 }
 
 .pageTitle button {
@@ -66,12 +84,12 @@ nav h1 {
 }
 
 .pageTitle button:hover {
-    background-color: var(--rojo);
+    background-color: var(--carmesi);
 }
 
 .pageTitle a {
+    font-size: 7rem;
     color: currentColor;
-    text-decoration: none;
 }
 
 a {
@@ -80,6 +98,7 @@ a {
 }
 
 .menuItem {
+    border-radius: 0 1rem 1rem 0;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -109,11 +128,11 @@ input {
 footer {
     width: 80vw;
     margin: auto;
-    border-radius: 1.5rem;
+    border-radius: 1.5rem 1.5rem 0 0;
 
     padding: 0.8rem;
     font-size: 2.2rem;
-    background-color: var(--rojo);
+    background-color: var(--carmesi);
     text-align: center;
 }
 
@@ -139,5 +158,45 @@ footer {
 @keyframes entranceR {
     from {
         transform: translateX(400px);
+    }
+}
+
+/* MQ */
+
+@media (max-width:500px) {
+    .pageTitle {
+        padding: 0 0.6rem;
+        letter-spacing: 0.2rem;
+    }
+
+    nav {
+        grid-template-columns: 80% 20%;
+    }
+
+    .pageTitle a {
+        font-size: 3.6rem;
+        margin: 0 0.4rem;
+
+        display: flex;
+        align-items: center;
+    }
+
+    .pageTitle div {
+        flex-direction: column;
+        gap: 0;
+    }
+
+    .pageTitle div button {
+        font-size: 1.2rem;
+        padding: 0.6rem;
+    }
+
+    .pageTitle span {
+        font-size: 2.4rem;
+        margin-right: 0.6rem;
+    }
+
+    footer {
+        width: 100vw;
     }
 }

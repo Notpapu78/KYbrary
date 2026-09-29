@@ -1,0 +1,208 @@
+/* ===================================================
+   FONDO GLOBAL (DESDE INDEX)
+   =================================================== */
+body {
+    background-image: url(../media/a.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    color: #ffffff;
+    backdrop-filter: blur(14px);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+}
+
+/* ===================================================
+   CONTENEDOR PRINCIPAL
+   =================================================== */
+main {
+    display: grid;
+    place-items: center;
+    min-height: calc(100vh - 120px);
+    padding: 30px 20px;
+    box-sizing: border-box;
+}
+
+.scanner-container {
+    width: 80vw;                  /* 80% del ancho de la pantalla */
+    min-height: 70vh;             /* 70% del alto de la pantalla */
+    background-color: rgba(25, 25, 30, 0.92); /* Fondo más oscuro para contraste */
+    backdrop-filter: blur(14px);
+    border: 2px solid rgba(0, 242, 254, 0.3);
+    border-radius: 24px;
+    padding: 50px 60px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.85);
+    color: #ffffff;
+    display: grid;
+    grid-template-columns: 1fr;
+    align-content: space-evenly;  /* Distribuye los elementos a lo largo del alto */
+    gap: 30px;
+    box-sizing: border-box;
+}
+
+.scanner-container h2 {
+    font-size: 3.2rem;            /* Título gigante */
+    margin: 0;
+    color: #ffffff;
+}
+
+.scanner-container p {
+    color: #d1d1d1;
+    font-size: 1.6rem;            /* Texto descriptivo bien legible */
+    margin: 10px 0 0 0;
+}
+
+/* ===================================================
+   MODOS DE OPERACIÓN
+   =================================================== */
+.mode-selector {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 25px;
+    margin: 10px 0;
+}
+
+.mode-selector label {
+    cursor: pointer;
+    display: block;
+}
+
+.mode-selector input[type="radio"] {
+    display: none;
+}
+
+.mode-selector span {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 26px 20px;           /* Botones altos */
+    background-color: rgba(42, 42, 50, 0.9);
+    border: 2px solid rgba(255, 255, 255, 0.15);
+    border-radius: 16px;
+    font-size: 1.8rem;            /* Texto de opciones muy grande */
+    font-weight: 700;
+    color: #ffffff;
+    transition: all 0.25s ease-in-out;
+    user-select: none;
+}
+
+.mode-selector span:hover {
+    background-color: rgba(60, 60, 72, 0.95);
+    border-color: #00f2fe;
+}
+
+.mode-selector input[type="radio"]:checked + span {
+    border-color: #00f2fe;
+    background-color: rgba(22, 41, 54, 0.95);
+    color: #00f2fe;
+    box-shadow: 0 0 25px rgba(0, 242, 254, 0.45);
+    transform: translateY(-3px);
+}
+
+/* ===================================================
+   GRID DE OPCIONES Y FORMULARIO
+   =================================================== */
+.loan-options-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 25px;
+}
+
+@media (max-width: 850px) {
+    .loan-options-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+#scanForm {
+    display: grid;
+    gap: 28px;
+}
+
+.scan-input-group {
+    display: grid;
+    gap: 12px;
+}
+
+.scan-input-group label {
+    font-size: 1.7rem;            /* Etiquetas de input bien visibles */
+    font-weight: 600;
+    color: #ffffff;
+}
+
+.scan-input-group input[type="text"],
+.scan-input-group select {
+    width: 100%;
+    padding: 22px 28px;           /* Inputs altos y anchos */
+    font-size: 1.8rem;            /* Tamaño de fuente dentro del campo */
+    background-color: rgba(18, 18, 22, 0.95);
+    border: 2px solid #00f2fe;
+    border-radius: 14px;
+    color: #00f2fe;
+    outline: none;
+    box-sizing: border-box;
+    transition: all 0.3s ease;
+}
+
+.scan-input-group input[type="text"]:focus,
+.scan-input-group select:focus {
+    border-color: #4facfe;
+    box-shadow: 0 0 22px rgba(0, 242, 254, 0.6);
+}
+
+.scan-input-group input#barcode {
+    text-align: center;
+    font-size: 2.3rem;            /* Código escaneado con tamaño destacado */
+    font-weight: bold;
+    letter-spacing: 2px;
+}
+
+/* ===================================================
+   TARJETA DE RESULTADO Y ALERTAS
+   =================================================== */
+.book-result-card {
+    background-color: rgba(37, 37, 46, 0.95);
+    border-left: 8px solid #00f2fe;
+    border-radius: 16px;
+    padding: 35px;
+    display: grid;
+    gap: 15px;
+}
+
+.book-result-card h3 {
+    font-size: 2.8rem;
+    color: #ffffff;
+    margin: 0;
+}
+
+.book-result-card p {
+    font-size: 1.7rem;
+    color: #e0e0e0;
+    margin: 0;
+}
+
+.book-result-card strong {
+    color: #00f2fe;
+}
+
+.alert {
+    padding: 22px 30px;
+    border-radius: 14px;
+    font-size: 1.7rem;
+    font-weight: bold;
+    text-align: center;
+    line-height: 1.5;
+}
+
+.alert.error {
+    background-color: rgba(255, 77, 77, 0.2);
+    border: 2px solid #ff4d4d;
+    color: #ff4d4d;
+}
+
+.alert.success {
+    background-color: rgba(0, 230, 118, 0.2);
+    border: 2px solid #00e676;
+    color: #00e676;
+}

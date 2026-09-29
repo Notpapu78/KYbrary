@@ -13,11 +13,21 @@ body {
 #introduction {
     display: grid;
     grid-template-columns: 1fr 1fr;
+    gap: 1rem;
 
-    margin: 2rem auto 0rem;
+    margin: 4rem auto 0rem;
     width: 80vw;
+    border: 0.2rem dotted rgba(245, 245, 245, 0.068);
+    padding: 2rem;
+    border-radius: 1rem;
 
     animation: apparition 0.5s ease-out;
+    transition: all 0.6s ease-in-out;
+}
+
+#introduction:hover {
+    border: 0.2rem dotted whitesmoke;
+    background-color: #e5e5e52f;
 }
 
 article h1 {
@@ -34,9 +44,11 @@ article p {
     align-items: center;
 }
 
-.cardApply div {
-    width: 50%;
-    text-align: center;
+.cardApply {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+
     padding: 0.8rem 1.2rem;
     border: var(--azul_neon) 4px solid;
     border-radius: 0.8rem;
@@ -61,7 +73,7 @@ article p {
 }
 
 .cardApply button:hover {
-    background-color: var(--rojo);
+    background-color: var(--carmesi);
 }
 /* Fin de la introduccion */
 
@@ -104,22 +116,26 @@ article p {
 
 .cardBook {
     width: 20%;
+    height: 28vh;
     padding: 0.8rem;
-    border: var(--azul_neon) 2px solid;
+    border: var(--carmesi) 0.2rem solid;
     text-align: center;
     border-radius: 1rem;
     position: relative;
     backdrop-filter: blur(12px);
+    transition: all 0.4s ease-out;
 }
 
 .cardBook div { 
     background-color: #30303060;
     border-radius: 0.4rem;
-    transition: all 0.5s ease-out;
 }
 
-.cardBook div:hover {
-    transform: scale(1.08);
+.cardBook:hover {
+    background-color: red;
+    backdrop-filter: blur(300px);
+    transform: scale(1.01);
+    box-shadow: 5px 5px 22px #000000de;
 }
 
 .cardBook h2 {
@@ -140,7 +156,7 @@ article p {
 }
 
 #recentBooks .cardBook {
-    border: var(--rojo) 2px solid;
+    border: var(--carmesi) 0.2rem solid;
 }
 
 #recentBooks article:nth-child(1) {
@@ -157,62 +173,84 @@ article p {
 
 /*Fin del contenido principal*/
 
-#literaryGenres {
-    width: 90vw;
-    height: auto;
-    margin: 10rem auto 4rem;
+/* Media queries */
 
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-    flex-wrap: wrap;
+@media (max-width:500px) {
+    article h1 {
+        font-size: 3.6rem;
+        text-align: center;
+    }
+
+    article p {
+        text-align: center;
+        font-size: 2.6rem;
+    }
+
+    .cardApply p {
+        font-size: 2.6rem;
+    }
+
+    #introduction {
+        grid-template-columns: auto;
+        grid-template-rows: 1fr 1fr;
+    }
+
+    .cardApply div {
+        width: 100%;
+    }
+
+    #tendencyBooks > h2, #recentBooks > h2 {
+        margin: auto;
+    }
+
+    .book-wrapper {
+        flex-direction: column;
+    }
+
+    .cardBook {
+        width: 100%;
+        margin-top: 3rem;
+    }
+
+    .cardBook h2 {
+        font-size: 2.6rem;
+    }
 }
 
-#literaryGenres article:nth-child(1) {
-    background-color: rgba(255, 255, 255, 0.400);
+@media (min-width:501px) and (max-width:768px) {
+    article h1 {
+        font-size: 5rem;
+    }
+
+    article p {
+        font-size: 3.4rem;
+    }
+
+    .cardBook {
+        width: 28%;
+    }
+
+    .cardBook h2 {
+        font-size: 2.2rem;
+    }
+
+    .cardBook p {
+        font-size: 1.6rem;
+    }
 }
 
-#literaryGenres article:nth-child(1):hover {
-    background-color: red;
+@media (min-width:769px) and (max-width:1032px) {
+    .cardBook {
+        width: 26%;
+        height: 28vh;
+    }
+
+    .cardBook h2 {
+        font-size: 2.6rem;
+    }
+
+    .cardBook p {
+        font-size: 1.6rem;
+    }
 }
-
-
-#literaryGenres article:nth-child(2) {
-    background-color: rgba(255, 255, 255, 0.400);
-}
-
-#literaryGenres article:nth-child(2):hover {
-    background-color: green;
-}
-
-#literaryGenres article:nth-child(3) {
-    background-color: rgba(255, 255, 255, 0.400);
-}
-
-#literaryGenres article:nth-child(3):hover {
-    background-color: var(--morado);
-}
-
-.cardGenre {
-    display: grid;
-    place-content: center;
-
-    width: 20vw;
-    height: 20vh;
-    margin: auto;
-    border-radius: 1.2rem;
-    padding: 0.6rem;
-    transition: all 0.4s ease-in-out;
-}
-
-.cardGenre h3 {
-    font-size: 4rem;
-}
-
-.cardGenre:hover {
-    transform: translateY(-0.8rem);
-    transform: scale(1.01);
-    box-shadow: 0.7rem 0.7rem 7px rgba(0, 0, 0, 0.527);
-}
-
-/**/
+/*End Media queries*/

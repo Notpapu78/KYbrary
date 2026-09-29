@@ -31,7 +31,7 @@ a {
 }
 
 .searcher {
-    background-color: var(--carmesi);
+    background-color: #df10109a;
     padding: 0.4rem 2rem;
 
     display: flex;
@@ -49,16 +49,41 @@ label {
     align-items: center;
 }
 
-label input {
-    padding: 0.8rem;
-    font-size: 2rem;
-    border-radius: 0.6rem;
-    border: var(--rojo) 0.2rem solid;
-}
-
 label img {
     width: 4.2rem;
     height: 4.2em;
+}
+
+
+label input {
+    padding: 0.8rem;
+    font-size: 2rem;
+    border-radius: 0.8rem;
+    border: white 0.1rem solid;
+}
+
+input::placeholder {
+    color: white;
+}
+
+select {
+    width: 16vw;
+    border-radius: 1rem;
+    background-color: transparent;
+    border: 0.1rem solid currentColor;
+    color: white;
+    font-size: 2rem;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    margin-left: 1rem;
+    padding: 0.8rem;
+}
+
+select:focus {
+    outline: none;
+}
+
+option {
+    background-color: var(--carmesi);
 }
 
 .bookLibrary {
@@ -66,9 +91,11 @@ label img {
     grid-template-columns: repeat(3, 1fr);
     grid-template-rows: auto;
     
+    backdrop-filter: blur(14px);
+    background-color: #fdfbd415;
     height: 60vh;
     gap: 2rem;
-    padding: 0 8px 16px;
+    padding: 2.4rem 0.8rem;
 
     overflow-y: scroll;
     overflow-x: hidden;
@@ -85,7 +112,31 @@ label img {
     padding: 1.2rem;
     border-radius: 0.8rem;
     border: var(--azul_neon) 2px solid;
-    background-color: rgba(0, 0, 0, 0.575);
+    background-color: #5c102486;
+
+    transition: all 0.45s ease-in-out;
+}
+
+small {
+    transition: all 0.45s ease-in-out;
+}
+
+.cBook:hover {
+    transform: translate(1.01);
+    background-color: var(--cream);
+    color: black;
+    box-shadow: 2px 3px 16px black;
+
+    small {
+        color: black;
+    }
+}
+
+.cBook form {
+    margin-top: 1rem;
+    width: 100%;
+
+    text-align: center;
 }
 
 .cBook h1 {
@@ -93,12 +144,46 @@ label img {
 }
 
 .cBook p {
-    font-size: 2rem;
+    font-size: 2.2rem;
+}
+
+.cBook p, .cBook small {
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+.cBook small {
+    font-size: 1.6rem;
 }
 
 .cBook img {
     width: 9rem;
     height: 9rem;
+}
+
+.cBook small {
+    color: var(--gris_plata);
+    font-size: 1.4rem;
+    margin-top: 0.5rem; 
+}
+
+.cBook button {
+    cursor: pointer;
+    width: 60%;
+    background-color: transparent;
+    margin: 1rem auto 0;
+    border: 0.1rem var(--carmesi) solid;
+    padding: 1rem;
+    border-radius: 1rem;
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: white;
+
+    transition: all 0.5s ease-in-out;
+}
+
+.cBook button:hover {
+    background-color: var(--carmesi);
+    color: white;
 }
 
 hr {

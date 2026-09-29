@@ -1,7 +1,26 @@
 <?php 
-require_once __DIR__ . '/../src/functions.php'; 
+session_start();
+require_once __DIR__ . '/../src/functions.php';
+
+$mensajeReserva = null;
+$tipoMensajeReserva = '';
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && ($_POST['action'] ?? '') === 'reservar') {
+    $isbn = trim($_POST['isbn'] ?? '');
+    $rutUser = $_SESSION['user_rut'] ?? '';
+    
+    if (!empty($isbn) && !empty($rutUser)) {
+        $res = reserveBook($isbn, $rutUser);
+        $mensajeReserva = $res['message'];
+        $tipoMensajeReserva = $res['success'] ? 'success' : 'error';
+    } else {
+        $mensajeReserva = "Debes estar autenticado para agendar un libro.";
+        $tipoMensajeReserva = 'error';
+    }
+}
 
 $books = getBooks();
+$categories = getCategories();
 ?>
 
 <!DOCTYPE html>
@@ -34,12 +53,30 @@ $books = getBooks();
         <section id="bookScroller">
             <article class="searcher">
                 <h1>Catálogo</h1>
+                
+                <?php if (!empty($mensajeReserva)): ?>
+                    <div class="alert <?php echo $tipoMensajeReserva; ?>" style="margin-bottom: 15px; padding: 10px; border-radius: 5px; text-align: center;">
+                        <?php echo htmlspecialchars($mensajeReserva); ?>
+                    </div>
+                <?php endif; ?>
+
                 <label>
                     <img src="icons/magnifyingGlass.png" alt="Buscar">
-                    <input type="text" placeholder="Nombre del libro...">
+                    <input type="text" id="searchInput" placeholder="Nombre del libro...">
+                    
+                    <select id="categorySelect">
+                        <option value="">Todas las categorías</option>
+                        <?php if (!empty($categories)): ?>
+                            <?php foreach ($categories as $cat): ?>
+                                <?php $catName = $cat['CATEGORY_NAME'] ?? $cat['category_name'] ?? ''; ?>
+                                <option value="<?php echo htmlspecialchars($catName); ?>">
+                                    <?php echo htmlspecialchars($catName); ?>
+                                </option>
+                            <?php endforeach; ?>
+                        <?php endif; ?>
+                    </select>
                 </label>
             </article>
-            <hr>
             <article class="bookLibrary">
                 <?php if (!empty($books)): ?>
                     <?php foreach ($books as $book): ?>
@@ -60,5 +97,6 @@ $books = getBooks();
     </footer>
 
     <script src="js/sidebar.js"></script>
+    <script src="js/categori.js"></script>
 </body>
 </html>

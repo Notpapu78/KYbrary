@@ -38,7 +38,7 @@
                         type="email" 
                         id="email" 
                         name="email" 
-                        placeholder="Correo electrónico (@liceorbl.cl)" 
+                        placeholder="Correo (@liceorbl.cl)" 
                         pattern=".+@liceorbl\.cl" 
                         title="Debes ingresar un correo con dominio @liceorbl.cl" 
                         required>

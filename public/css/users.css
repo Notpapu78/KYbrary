@@ -1,0 +1,244 @@
+/* Fondo general sincronizado con el tema */
+body {
+    background-image: url('../media/a.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    color: #ffffff;
+    min-height: 100vh;
+}
+
+.main-content {
+    padding: 3rem 1rem;
+}
+
+/* Contenedor Principal Blanco Translúcido con Borde Carmesí */
+.user-container {
+    width: 85vw;
+    max-width: 1250px;
+    margin: 3rem auto;
+    padding: 3rem;
+    background: rgba(255, 255, 255, 0.18);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: var(--carmesi) 0.3rem solid;
+    border-radius: 1.2rem;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.6);
+    animation: apparition 0.5s ease-out;
+}
+
+/* Título de la página */
+.user-container h1 {
+    font-size: 5rem;
+    text-align: center;
+    color: #ffffff;
+    margin-bottom: 2.5rem;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
+}
+
+/* Barra de Filtros */
+.filter-bar {
+    display: flex;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+    margin-bottom: 3rem;
+    background: rgba(0, 0, 0, 0.35);
+    padding: 1.5rem;
+    border-radius: 1rem;
+    border: 0.2rem solid rgba(255, 255, 255, 0.2);
+}
+
+.filter-bar input, 
+.filter-bar select {
+    flex: 1;
+    min-width: 240px;
+    padding: 1.2rem 1.6rem;
+    border-radius: 0.8rem;
+    border: var(--gris_plata) 0.2rem solid;
+    background: rgba(0, 0, 0, 0.6);
+    color: #ffffff;
+    font-size: 2.2rem;
+    outline: none;
+    transition: all 0.3s ease;
+}
+
+.filter-bar input:focus, 
+.filter-bar select:focus {
+    border-color: var(--carmesi);
+    box-shadow: 0 0 12px var(--carmesi);
+}
+
+/* Botón Buscar Filtro */
+.filter-bar button {
+    padding: 1.2rem 2.5rem;
+    border-radius: 0.8rem;
+    border: var(--gris_plata) 0.2rem solid;
+    background-color: rgba(255, 255, 255, 0.2);
+    color: #ffffff;
+    font-size: 2.2rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.4s ease-out, border-color 0.4s ease-out;
+}
+
+.filter-bar button:hover {
+    background-color: var(--carmesi);
+    border-color: var(--carmesi);
+}
+
+/* Grilla y Tarjetas de Usuario */
+.user-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    gap: 2rem;
+}
+
+.user-card {
+    background: rgba(0, 0, 0, 0.45);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: var(--carmesi) 0.2rem solid;
+    border-radius: 1rem;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: all 0.4s ease-out;
+}
+
+.user-card:hover {
+    background: rgba(255, 255, 255, 0.22);
+    transform: scale(1.02);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.7);
+}
+
+/* Tarjeta Sancionada */
+.user-card.banned {
+    border-color: #ff3333;
+    background: rgba(177, 14, 14, 0.35);
+}
+
+/* Información del Usuario */
+.user-info h3 {
+    margin: 0 0 1rem 0;
+    font-size: 3rem;
+    color: #ffffff;
+    border-bottom: 0.15rem solid rgba(255, 255, 255, 0.25);
+    padding-bottom: 0.6rem;
+}
+
+.user-info p {
+    margin: 0.8rem 0;
+    color: var(--gris_plata);
+    font-size: 2.2rem;
+}
+
+.user-info p strong {
+    color: #ffffff;
+}
+
+/* Badges de Estado */
+.badge {
+    display: inline-block;
+    padding: 0.6rem 1.2rem;
+    border-radius: 0.6rem;
+    font-size: 1.8rem;
+    font-weight: bold;
+    letter-spacing: 0.5px;
+    margin-top: 0.6rem;
+}
+
+.badge-active {
+    background: rgba(255, 255, 255, 0.25);
+    color: #ffffff;
+    border: 0.15rem solid var(--gris_plata);
+}
+
+.badge-banned {
+    background: var(--carmesi);
+    color: #ffffff;
+    border: 0.15rem solid #ff4d4d;
+}
+
+.badge-overdue {
+    background: rgba(230, 161, 0, 0.4);
+    color: #ffffff;
+    border: 0.15rem solid #e6a100;
+}
+
+.badge-pending {
+    background: rgba(255, 230, 0, 0.3);
+    color: #ffffff;
+    border: 0.15rem solid #ffea00;
+}
+
+/* Botones de Acción */
+.user-actions {
+    margin-top: 1.8rem;
+}
+
+.btn-ban {
+    background-color: rgba(177, 14, 14, 0.6);
+    color: #ffffff;
+    border: var(--carmesi) 0.2rem solid;
+    padding: 1.2rem 1.5rem;
+    border-radius: 0.8rem;
+    cursor: pointer;
+    width: 100%;
+    font-size: 2.2rem;
+    font-weight: bold;
+    transition: background-color 0.4s ease-out;
+}
+
+.btn-ban:hover {
+    background-color: var(--carmesi);
+}
+
+.btn-unban {
+    background-color: rgba(40, 167, 69, 0.6);
+    color: #ffffff;
+    border: #28a745 0.2rem solid;
+    padding: 1.2rem 1.5rem;
+    border-radius: 0.8rem;
+    cursor: pointer;
+    width: 100%;
+    font-size: 2.2rem;
+    font-weight: bold;
+    transition: background-color 0.4s ease-out;
+}
+
+.btn-unban:hover {
+    background-color: #28a745;
+}
+
+/* Media Query Responsiva */
+@media (max-width: 600px) {
+    .user-container {
+        width: 95vw;
+        padding: 1.8rem;
+    }
+
+    .user-container h1 {
+        font-size: 3.6rem;
+    }
+
+    .filter-bar {
+        flex-direction: column;
+    }
+
+    .filter-bar input, 
+    .filter-bar select, 
+    .filter-bar button {
+        width: 100%;
+        font-size: 2rem;
+    }
+
+    .user-info h3 {
+        font-size: 2.4rem;
+    }
+
+    .user-info p {
+        font-size: 1.8rem;
+    }
+}

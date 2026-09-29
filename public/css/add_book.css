@@ -64,6 +64,11 @@ select {
     background: transparent;
     color: white;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    border-radius: 1rem;
+}
+
+select:focus {
+    outline: none;
 }
 
 option {
