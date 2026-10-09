@@ -1,6 +1,15 @@
 <?php 
 session_start();
 require_once __DIR__ . '/../src/functions.php'; 
+
+$userRole = strtoupper((string)($_SESSION['user_role'] ?? $_SESSION['rol_name'] ?? $_SESSION['rol_id'] ?? $_SESSION['roles_rol_id'] ?? '1'));
+$isAdminOrLibrarian = in_array($userRole, ['3', 'BIBLIOTECARIO', 'ADMIN', 'ADMINISTRADOR']);
+
+if (!$isAdminOrLibrarian) {
+    header('Location: index.php');
+    exit;
+}
+
 $categories = getCategories();
 ?>
 
@@ -9,6 +18,7 @@ $categories = getCategories();
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="icons/Pluma.ico" type="image/x-icon">
     <link rel="stylesheet" href="css/common.css">
     <link rel="stylesheet" href="css/add_book.css">
     <link rel="stylesheet" href="css/sidebar.css">
@@ -32,7 +42,7 @@ $categories = getCategories();
 
     <main class="main-content">
         <section id="add-book-form">
-            <form action="process_add_book.php" method="POST">
+            <form action="process_add_book.php" method="POST" enctype="multipart/form-data">
                 <h1>Nuevo Libro</h1>
 
                 <?php if (isset($_GET['status']) && $_GET['status'] === 'success'): ?>
@@ -72,11 +82,20 @@ $categories = getCategories();
                     </select>
                 </fieldset>
 
+                <fieldset class="input-box">
+                    <input type="number" id="copies" name="copies" min="1" max="100" value="1" placeholder="Stock / Cantidad de copias (Opcional)">
+                </fieldset>
+
+                <fieldset class="input-box" style="display: flex; flex-direction: column; align-items: flex-start; gap: 0.5rem; padding: 0.5rem 1rem;">
+                    <label for="book_image">Portada del libro (Opcional):</label>
+                    <input type="file" id="book_image" name="book_image" accept="image/*" style="width: 100%;">
+                </fieldset>
+
                 <hr style="margin-top: 2rem;">
                 <button type="submit">Guardar Libro</button>
                 <hr>
 
-                <p style="text-align: center; margin-top: 1rem;">
+                <p style="text-align: center; margin-top: 1rem; font-size: 2rem;">
                     <a href="catalogo.php" style="color: var(--gris_plata); text-decoration: none;">Volver al Catálogo</a>
                 </p>
             </form>

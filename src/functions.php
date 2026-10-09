@@ -24,8 +24,10 @@ function renderSidebar() {
     $firstName = explode(' ', trim($fullName))[0];
     $avatarPath = 'media/default_avatar.jpg';
     
-    $userRole = strtoupper($_SESSION['user_role'] ?? $_SESSION['rol_name'] ?? $_SESSION['rol_id'] ?? $_SESSION['roles_rol_id'] ?? 'USUARIO');
-    $isAdminOrLibrarian = in_array($userRole, ['ADMIN', 'ADMINISTRADOR', 'BIBLIOTECARIO', '1', '2', '3']); 
+    $rawRole   = $_SESSION['user_role'] ?? $_SESSION['rol_name'] ?? $_SESSION['rol_id'] ?? $_SESSION['roles_rol_id'] ?? '1';
+    $userRole  = strtoupper((string)$rawRole);
+    
+    $isLibrarian = in_array($userRole, ['3', 'BIBLIOTECARIO', 'ADMIN', 'ADMINISTRADOR']); 
     ?>
     <aside class="sidebar" id="sidebar">
         <?php if (isset($_SESSION['user_rut'])): ?>
@@ -39,18 +41,20 @@ function renderSidebar() {
         <?php endif; ?>
 
         <div class="nav-links">
-            <a href="index.php" class="nav-item"><span>🏠</span> Inicio</a>
-            <a href="catalogo.php" class="nav-item"><span>📂</span> Catálogo</a>
+            <a href="index.php" class="nav-item">Inicio</a>
+            <a href="catalogo.php" class="nav-item">Catálogo</a>
             
-            <?php if ($isAdminOrLibrarian): ?>
-                <a href="escaner.php" class="nav-item"><span>📷</span> Escáner</a>
-                <a href="usuarios.php" class="nav-item"><span>👥</span> Usuarios</a>
-                <a href="add_book.php" class="nav-item"><span>⏱️</span> Añadir Libro</a>
+            <?php if ($isLibrarian): ?>
+                <a href="escaner.php" class="nav-item">Escáner</a>
+                <a href="usuarios.php" class="nav-item">Usuarios</a>
+                <a href="add_book.php" class="nav-item">Añadir Libro</a>
             <?php endif; ?>
 
-            <a href="logout.php" class="nav-item logout-item" style="color: #ff6b6b; margin-top: 2rem;">
-                <span>🚪</span> Cerrar sesión
-            </a>
+            <?php if (isset($_SESSION['user_rut'])): ?>
+                <a href="logout.php" class="nav-item logout-item" style="color: #ff6b6b; margin-top: 2rem;">
+                    Cerrar sesión
+                </a>
+            <?php endif; ?>
         </div>
     </aside>
     <?php
@@ -125,11 +129,6 @@ function reserveBook($isbn, $rutUser) {
         return ['success' => false, 'message' => "Debes estar autenticado para agendar un libro."];
     }
 
-    $penaltyCheck = checkAndApplyUserPenalty($cleanRut);
-    if (!$penaltyCheck['allowed']) {
-        return ['success' => false, 'message' => $penaltyCheck['message']];
-    }
-
     // Validación: Máximo 1 reserva activa a la vez
     try {
         $stmtCheckRes = $pdo->prepare("
@@ -142,7 +141,7 @@ function reserveBook($isbn, $rutUser) {
             return ['success' => false, 'message' => "Ya tienes una reserva activa. Solo puedes reservar 1 libro a la vez."];
         }
     } catch (PDOException $e) {
-        // En caso de discrepancia en la BD se continúa con la transacción
+        // Continuar si ocurre alguna inconsistencia
     }
 
     $dateStart  = date('Y-m-d');
@@ -238,7 +237,6 @@ function getBookByBarcode($barcode) {
 function processLoanByBarcode($barcode, $rutUser, $diasPrestamo = 7) {
     global $pdo;
 
-    // Validar conexión a la base de datos
     if (!isset($pdo) || $pdo === null) {
         return [
             'success' => false, 
@@ -262,12 +260,6 @@ function processLoanByBarcode($barcode, $rutUser, $diasPrestamo = 7) {
         return ['success' => false, 'message' => "Error al consultar usuario: " . $e->getMessage()];
     }
 
-    // 2. Verificar sanciones
-    $penaltyCheck = checkAndApplyUserPenalty($cleanRut);
-    if (!$penaltyCheck['allowed']) {
-        return ['success' => false, 'message' => $penaltyCheck['message']];
-    }
-
     $barcodeClean = trim((string)$barcode);
     $dateStart = date('Y-m-d');
     $dateFinish = date('Y-m-d', strtotime("+$diasPrestamo days"));
@@ -275,7 +267,7 @@ function processLoanByBarcode($barcode, $rutUser, $diasPrestamo = 7) {
     try {
         $pdo->beginTransaction();
 
-        // 3. Buscar la unidad o libro
+        // 2. Buscar la unidad o libro
         $stmtUnit = $pdo->prepare("
             SELECT u.unit_id, u.unit_status, b.book_title 
             FROM unit u
@@ -301,7 +293,7 @@ function processLoanByBarcode($barcode, $rutUser, $diasPrestamo = 7) {
             return ['success' => false, 'message' => "El ejemplar ya se encuentra PRESTADO."];
         }
 
-        // 4. Verificar si tenía reserva previa
+        // 3. Verificar si tenía reserva previa
         $stmtReserva = $pdo->prepare("
             SELECT bn.benefits_id 
             FROM benefits bn
@@ -319,7 +311,7 @@ function processLoanByBarcode($barcode, $rutUser, $diasPrestamo = 7) {
             return ['success' => false, 'message' => "El ejemplar está RESERVADO por otro usuario."];
         }
 
-        // 5. Registrar el préstamo
+        // 4. Registrar el préstamo
         if ($reserva) {
             $stmtUpdateBen = $pdo->prepare("
                 UPDATE benefits 
@@ -451,24 +443,25 @@ function getUserLoans($rutUser) {
     }
 }
 
-function addNewBook($isbn, $title, $author, $editorial, $categoryId, $copies = 1) {
+function addNewBook($isbn, $title, $author, $editorial, $categoryId, $copies = 1, $imagePath = 'icons/book.png') {
     global $pdo;
     if (!isset($pdo)) {
         return ['success' => false, 'message' => "Error de conexión a la base de datos."];
     }
 
     try {
-        $stmt = $pdo->prepare("CALL sp_agregar_libro(:isbn, :title, :author, :editorial, :cat_id, :copias)");
+        $stmt = $pdo->prepare("CALL sp_agregar_libro(:isbn, :title, :author, :editorial, :cat_id, :copias, :imagen)");
         $stmt->execute([
             ':isbn'      => trim($isbn),
             ':title'     => trim($title),
             ':author'    => trim($author),
             ':editorial' => trim($editorial),
             ':cat_id'    => (int)$categoryId,
-            ':copias'    => max(1, (int)$copies)
+            ':copias'    => max(1, (int)$copies),
+            ':imagen'    => $imagePath
         ]);
 
-        return ['success' => true, 'message' => "Libro registrado exitosamente."];
+        return ['success' => true, 'message' => "Libro y sus ejemplares registrados exitosamente."];
 
     } catch (PDOException $e) {
         if ($e->getCode() === '23505') {
@@ -608,12 +601,12 @@ function sendVerificationEmail($email, $code) {
         $mail->Subject = 'Código de verificación - KYbrary';
         $mail->Body    = "
             <div style='font-family: Arial, sans-serif; background-color: #121212; color: #ffffff; padding: 20px; border-radius: 8px;'>
-                <h2 style='color: #00ffff;'>Verificación de cuenta - KYbrary</h2>
-                <p>Tu código de verificación es:</p>
-                <div style='background: #1e1e1e; padding: 15px; font-size: 28px; font-weight: bold; letter-spacing: 5px; text-align: center; color: #00ffff; border: 1px solid #00ffff; border-radius: 6px;'>
+                <h2 style='color: #9; font-size: 2.4rem'>Verificación de cuenta - KYbrary</h2>
+                <p style='font-size: 1.6rem;'>Tu código de verificación es:</p>
+                <div style='background: #1e1e1e; padding: 15px; font-size: 28px; font-weight: bold; letter-spacing: 1.5rem; text-align: center; color: #ff0033; border: 1px solid #ff0033; border-radius: 6px;'>
                     {$code}
                 </div>
-                <p style='margin-top: 15px; font-size: 12px; color: #888;'>Ingresa este código en la pantalla de verificación para activar tu cuenta.</p>
+                <p style='margin-top: 15px; font-size: 1.6rem; color: #888;'>Ingresa este código en la pantalla de verificación para activar tu cuenta.</p>
             </div>
         ";
 
@@ -621,57 +614,6 @@ function sendVerificationEmail($email, $code) {
         return true;
     } catch (Exception $e) {
         return false;
-    }
-}
-
-function checkAndApplyUserPenalty($rutUser) {
-    global $pdo;
-    if (!isset($pdo)) return ['allowed' => true];
-
-    $cleanRut = getNrunFromRut($rutUser);
-
-    try {
-        $stmtUser = $pdo->prepare("SELECT banned_until FROM users WHERE user_nrun = :rut");
-        $stmtUser->execute([':rut' => $cleanRut]);
-        $bannedUntil = $stmtUser->fetchColumn();
-
-        if ($bannedUntil && strtotime($bannedUntil) >= strtotime(date('Y-m-d'))) {
-            $fechaFormat = date('d/m/Y', strtotime($bannedUntil));
-            return [
-                'allowed' => false,
-                'message' => "El usuario se encuentra sancionado sin derecho a préstamo hasta el {$fechaFormat}."
-            ];
-        }
-
-        $stmtOverdue = $pdo->prepare("
-            SELECT COUNT(*) 
-            FROM benefits 
-            WHERE users_user_nrun = :rut 
-              AND benefits_state = 'ACTIVO' 
-              AND date_finish < CURRENT_DATE
-        ");
-        $stmtOverdue->execute([':rut' => $cleanRut]);
-        $overdueCount = (int)$stmtOverdue->fetchColumn();
-
-        if ($overdueCount > 2) {
-            $stmtBan = $pdo->prepare("
-                UPDATE users 
-                SET banned_until = CURRENT_DATE + INTERVAL '1 month' 
-                WHERE user_nrun = :rut
-            ");
-            $stmtBan->execute([':rut' => $cleanRut]);
-
-            $nuevaFecha = date('d/m/Y', strtotime('+1 month'));
-            return [
-                'allowed' => false,
-                'message' => "El usuario posee {$overdueCount} libros atrasados (máximo permitido: 2). Se ha aplicado una sanción automática hasta el {$nuevaFecha}."
-            ];
-        }
-
-        return ['allowed' => true];
-
-    } catch (PDOException $e) {
-        return ['allowed' => true]; 
     }
 }
 
@@ -687,7 +629,6 @@ function getUsersForManagement($search = '', $filter = '') {
                 u.user_name,
                 u.user_surname,
                 u.user_email,
-                u.banned_until,
                 r.rol_name,
                 COUNT(CASE WHEN b.benefits_state = 'ACTIVO' AND b.date_finish >= CURRENT_DATE THEN 1 END) AS prestamos_activos,
                 COUNT(CASE WHEN b.benefits_state = 'RESERVADO' THEN 1 END) AS reservas_pendientes,
@@ -701,11 +642,11 @@ function getUsersForManagement($search = '', $filter = '') {
         $params = [];
 
         if (!empty($search)) {
-            $sql .= " AND (LOWER(u.user_name) LIKE :search OR LOWER(u.user_surname) LIKE :search OR u.user_nrun LIKE :search)";
+            $sql .= " AND (LOWER(u.user_name) LIKE :search OR LOWER(u.user_surname) LIKE :search OR u.user_nrun LIKE :search OR LOWER(u.user_email) LIKE :search)";
             $params[':search'] = '%' . strtolower(trim($search)) . '%';
         }
 
-        $sql .= " GROUP BY u.user_nrun, u.user_dvrun, u.user_name, u.user_surname, u.user_email, u.banned_until, r.rol_name";
+        $sql .= " GROUP BY u.user_nrun, u.user_dvrun, u.user_name, u.user_surname, u.user_email, r.rol_name";
 
         if ($filter === 'activa') {
             $sql .= " HAVING COUNT(CASE WHEN b.benefits_state = 'ACTIVO' AND b.date_finish >= CURRENT_DATE THEN 1 END) > 0";
@@ -713,8 +654,6 @@ function getUsersForManagement($search = '', $filter = '') {
             $sql .= " HAVING COUNT(CASE WHEN b.benefits_state = 'RESERVADO' THEN 1 END) > 0";
         } elseif ($filter === 'atrasado') {
             $sql .= " HAVING COUNT(CASE WHEN b.benefits_state = 'ACTIVO' AND b.date_finish < CURRENT_DATE THEN 1 END) > 0";
-        } elseif ($filter === 'sancionado') {
-            $sql .= " HAVING u.banned_until >= CURRENT_DATE";
         } elseif ($filter === 'sin_prestamos') {
             $sql .= " HAVING COUNT(CASE WHEN b.benefits_state IN ('ACTIVO', 'RESERVADO') THEN 1 END) = 0";
         }
@@ -728,23 +667,4 @@ function getUsersForManagement($search = '', $filter = '') {
     } catch (PDOException $e) {
         return [];
     }
-}
-
-function updateUserPenaltyStatus($rutUser, $action) {
-    global $pdo;
-    if (!isset($pdo)) return false;
-
-    $cleanRut = getNrunFromRut($rutUser);
-
-    try {
-        if ($action === 'sancionar') {
-            $stmt = $pdo->prepare("UPDATE users SET banned_until = CURRENT_DATE + INTERVAL '1 month' WHERE user_nrun = :rut");
-        } else {
-            $stmt = $pdo->prepare("UPDATE users SET banned_until = NULL WHERE user_nrun = :rut");
-        }
-        return $stmt->execute([':rut' => $cleanRut]);
-    } catch (PDOException $e) {
-        return false;
-    }
-}
-?>
+}?>

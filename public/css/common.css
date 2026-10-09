@@ -126,8 +126,8 @@ input {
 }
 
 footer {
-    width: 80vw;
-    margin: auto;
+    width: 85vw;
+    margin: 4rem auto 0;
     border-radius: 1.5rem 1.5rem 0 0;
 
     padding: 0.8rem;

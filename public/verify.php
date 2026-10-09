@@ -33,6 +33,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="icons/Pluma.ico" type="image/x-icon">
     <link rel="stylesheet" href="css/common.css">
     <link rel="stylesheet" href="css/login-register.css">
     <title>Verificar Cuenta - KYbrary</title>
@@ -43,9 +44,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <form action="verify.php" method="POST">
                 <h1>Verificación de Cuenta</h1>
 
-                <p style="color: whitesmoke; font-size: 14px; text-align: center; margin-bottom: 1.5rem;">
+                <p style="color: whitesmoke; font-size: 2.4rem; text-align: center; margin-bottom: 1.5rem;">
                     Ingresa el código de 6 dígitos enviado a:<br>
-                    <strong style="color: #00ffff;"><?php echo htmlspecialchars($email); ?></strong>
+                    <strong style="color: #ff4d4d;"><?php echo htmlspecialchars($email); ?></strong>
                 </p>
 
                 <?php if (!empty($error)): ?>
@@ -55,9 +56,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 <?php endif; ?>
 
                 <?php if (isset($_SESSION['debug_code'])): ?>
-                    <div style="background: rgba(0, 255, 255, 0.1); border: 1px dashed #00ffff; padding: 0.8rem; border-radius: 6px; margin-bottom: 1.5rem; text-align: center; color: #fff;">
-                        <small style="color: #aaa;">[Modo Prueba Local]</small><br>
-                        Tu código es: <strong style="font-size: 1.2rem; letter-spacing: 2px; color: #00ffff;"><?php echo $_SESSION['debug_code']; ?></strong>
+                    <div style="background: rgba(0, 255, 255, 0.1); border: 1px dashed #ff4d4d; padding: 0.8rem; border-radius: 6px; margin-bottom: 1.5rem; text-align: center; color: #ff4d4d;">
+                        Tu código es: <strong style="font-size: 1.2rem; letter-spacing: 2px; color: #ff4d4d;"><?php echo $_SESSION['debug_code']; ?></strong>
                     </div>
                 <?php endif; ?>
 

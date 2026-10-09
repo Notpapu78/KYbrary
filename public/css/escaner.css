@@ -1,5 +1,5 @@
 /* ===================================================
-   FONDO GLOBAL (DESDE INDEX)
+   FONDO GLOBAL
    =================================================== */
 body {
     background-image: url(../media/a.jpg);
@@ -8,7 +8,7 @@ body {
     background-size: cover;
     background-attachment: fixed;
     color: #ffffff;
-    backdrop-filter: blur(14px);
+    backdrop-filter: blur(12px);
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     margin: 0;
 }
@@ -25,32 +25,36 @@ main {
 }
 
 .scanner-container {
-    width: 80vw;                  /* 80% del ancho de la pantalla */
-    min-height: 70vh;             /* 70% del alto de la pantalla */
-    background-color: rgba(25, 25, 30, 0.92); /* Fondo más oscuro para contraste */
-    backdrop-filter: blur(14px);
-    border: 2px solid rgba(0, 242, 254, 0.3);
-    border-radius: 24px;
-    padding: 50px 60px;
-    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.85);
+    width: 84vw;
+    min-height: 70vh;
+    background-color: rgba(0, 0, 0, 0.65);
+    backdrop-filter: blur(16px);
+    border: 0.2rem solid rgba(255, 77, 77, 0.4);
+    border-radius: 2rem;
+    padding: 4rem 5rem;
+    box-shadow: 0 15px 45px rgba(0, 0, 0, 0.9);
     color: #ffffff;
     display: grid;
     grid-template-columns: 1fr;
-    align-content: space-evenly;  /* Distribuye los elementos a lo largo del alto */
-    gap: 30px;
+    align-content: space-evenly;
+    gap: 2.5rem;
     box-sizing: border-box;
 }
 
 .scanner-container h2 {
-    font-size: 3.2rem;            /* Título gigante */
+    font-size: 3rem;
     margin: 0;
     color: #ffffff;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.8);
 }
 
 .scanner-container p {
-    color: #d1d1d1;
-    font-size: 1.6rem;            /* Texto descriptivo bien legible */
+    color: #ffffff;
+    font-size: 1.6rem;
+    font-weight: 500;
+    line-height: 1.5;
     margin: 10px 0 0 0;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.9);
 }
 
 /* ===================================================
@@ -58,8 +62,8 @@ main {
    =================================================== */
 .mode-selector {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-    gap: 25px;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 20px;
     margin: 10px 0;
 }
 
@@ -76,37 +80,37 @@ main {
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 26px 20px;           /* Botones altos */
-    background-color: rgba(42, 42, 50, 0.9);
-    border: 2px solid rgba(255, 255, 255, 0.15);
-    border-radius: 16px;
-    font-size: 1.8rem;            /* Texto de opciones muy grande */
-    font-weight: 700;
+    padding: 2.2rem 1.8rem;
+    background-color: rgba(0, 0, 0, 0.5);
+    border: 0.2rem solid rgba(255, 255, 255, 0.2);
+    border-radius: 1.4rem;
+    font-size: 1.7rem;
+    font-weight: 600;
     color: #ffffff;
     transition: all 0.25s ease-in-out;
     user-select: none;
 }
 
 .mode-selector span:hover {
-    background-color: rgba(60, 60, 72, 0.95);
-    border-color: #00f2fe;
+    background-color: rgba(255, 77, 77, 0.15);
+    border-color: #ff4d4d;
 }
 
 .mode-selector input[type="radio"]:checked + span {
-    border-color: #00f2fe;
-    background-color: rgba(22, 41, 54, 0.95);
-    color: #00f2fe;
-    box-shadow: 0 0 25px rgba(0, 242, 254, 0.45);
-    transform: translateY(-3px);
+    border-color: #ff4d4d;
+    background-color: rgba(255, 77, 77, 0.25);
+    color: #ffffff;
+    box-shadow: 0 0 20px rgba(255, 77, 77, 0.4);
+    transform: translateY(-2px);
 }
 
 /* ===================================================
-   GRID DE OPCIONES Y FORMULARIO
+   FORMULARIO E INPUTS
    =================================================== */
 .loan-options-grid {
     display: grid;
     grid-template-columns: 2fr 1fr;
-    gap: 25px;
+    gap: 20px;
 }
 
 @media (max-width: 850px) {
@@ -117,92 +121,123 @@ main {
 
 #scanForm {
     display: grid;
-    gap: 28px;
+    gap: 24px;
 }
 
 .scan-input-group {
     display: grid;
-    gap: 12px;
+    gap: 10px;
 }
 
 .scan-input-group label {
-    font-size: 1.7rem;            /* Etiquetas de input bien visibles */
+    font-size: 1.6rem;
     font-weight: 600;
     color: #ffffff;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.8);
 }
 
 .scan-input-group input[type="text"],
 .scan-input-group select {
     width: 100%;
-    padding: 22px 28px;           /* Inputs altos y anchos */
-    font-size: 1.8rem;            /* Tamaño de fuente dentro del campo */
-    background-color: rgba(18, 18, 22, 0.95);
-    border: 2px solid #00f2fe;
-    border-radius: 14px;
-    color: #00f2fe;
+    padding: 18px 24px;
+    font-size: 1.7rem;
+    font-weight: 500;
+    background-color: rgba(0, 0, 0, 0.6);
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-radius: 12px;
+    color: #ffffff;
     outline: none;
     box-sizing: border-box;
     transition: all 0.3s ease;
 }
 
+.scan-input-group select option {
+    background-color: #111111;
+    color: #ffffff;
+    font-size: 1.5rem;
+    padding: 10px;
+}
+
+.scan-input-group input[type="text"]::placeholder {
+    color: rgba(255, 255, 255, 0.6);
+    font-weight: 400;
+}
+
 .scan-input-group input[type="text"]:focus,
 .scan-input-group select:focus {
-    border-color: #4facfe;
-    box-shadow: 0 0 22px rgba(0, 242, 254, 0.6);
+    border-color: #ff4d4d;
+    box-shadow: 0 0 18px rgba(255, 77, 77, 0.5);
+    background-color: rgba(0, 0, 0, 0.8);
 }
 
 .scan-input-group input#barcode {
     text-align: center;
-    font-size: 2.3rem;            /* Código escaneado con tamaño destacado */
+    font-size: 2.2rem;
     font-weight: bold;
     letter-spacing: 2px;
+    border-color: #ff4d4d;
 }
 
 /* ===================================================
    TARJETA DE RESULTADO Y ALERTAS
    =================================================== */
 .book-result-card {
-    background-color: rgba(37, 37, 46, 0.95);
-    border-left: 8px solid #00f2fe;
-    border-radius: 16px;
-    padding: 35px;
+    background-color: rgba(0, 0, 0, 0.65);
+    border-left: 6px solid #ff4d4d;
+    border-radius: 12px;
+    padding: 28px;
     display: grid;
-    gap: 15px;
+    gap: 12px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.6);
 }
 
 .book-result-card h3 {
-    font-size: 2.8rem;
+    font-size: 2.5rem;
     color: #ffffff;
     margin: 0;
 }
 
 .book-result-card p {
     font-size: 1.7rem;
-    color: #e0e0e0;
+    color: #ffffff;
+    font-weight: 500;
     margin: 0;
 }
 
 .book-result-card strong {
-    color: #00f2fe;
+    color: #ff4d4d;
+    font-weight: 700;
 }
 
 .alert {
-    padding: 22px 30px;
-    border-radius: 14px;
+    padding: 18px 25px;
+    border-radius: 12px;
     font-size: 1.7rem;
-    font-weight: bold;
+    font-weight: 700;
     text-align: center;
-    line-height: 1.5;
+    line-height: 1.4;
+    background-color: rgba(0, 0, 0, 0.7);
 }
 
 .alert.error {
-    background-color: rgba(255, 77, 77, 0.2);
     border: 2px solid #ff4d4d;
     color: #ff4d4d;
+    background-color: rgba(255, 77, 77, 0.15);
 }
 
 .alert.success {
-    background-color: rgba(0, 230, 118, 0.2);
-    border: 2px solid #00e676;
-    color: #00e676;
+    border: 2px solid #00ffff;
+    color: #00ffff;
+    background-color: rgba(0, 255, 255, 0.15);
+}
+
+@media (max-width:500px) {
+    .scanner-container {
+        padding: 1rem 2rem;
+    }
+
+    .mode-selector span {
+        width: 100%;
+        padding: 1.2rem;
+    }
 }

@@ -21,6 +21,7 @@ $historial = $loansData['historial'];
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="icons/Pluma.ico" type="image/x-icon">
     <title>Mi Perfil - KYbrary</title>
     <link rel="stylesheet" href="css/common.css">
     <link rel="stylesheet" href="css/sidebar.css">
@@ -44,7 +45,6 @@ $historial = $loansData['historial'];
 
     <main>
         <div class="profile-container">
-            <!-- Tarjeta del Usuario -->
             <div class="profile-card">
                 <img class="profile-avatar" src="media/default_avatar.jpg" alt="Perfil">
                 <div class="user-details">
@@ -52,33 +52,29 @@ $historial = $loansData['historial'];
                     <p><strong>RUT:</strong> <?php echo htmlspecialchars($userRut); ?></p>
                     
                     <?php 
-                        // Mapeo de códigos de rol a nombres legibles
                         $rolesMap = [
-                            '1'             => 'Administrador',
-                            '2'             => 'Bibliotecario',
-                            '3'             => 'Usuario',
-                            'ADMIN'         => 'Administrador',
-                            'ADMINISTRADOR' => 'Administrador',
-                            'BIBLIOTECARIO' => 'Bibliotecario',
-                            'USUARIO'       => 'Usuario'
+                            '1'             => 'Estudiante',
+                            '2'             => 'Profesor',
+                            '3'             => 'Bibliotecario',
+                            'ESTUDIANTE'    => 'Estudiante',
+                            'PROFESOR'      => 'Profesor',
+                            'BIBLIOTECARIO' => 'Bibliotecario'
                         ];
                         $nombreRol = $rolesMap[strtoupper($userRole)] ?? $userRole;
                     ?>
                     <span class="badge-role"><?php echo htmlspecialchars($nombreRol); ?></span>
                     
-                    <!-- Enlace para cerrar sesión -->
                     <div style="margin-top: 1rem;">
                         <a href="logout.php" class="btn-logout" >
-                            🚪 Cerrar sesión
+                            Cerrar sesión
                         </a>
                     </div>
                 </div>
             </div>
 
             <div id="container-books">
-            <!-- Reservas y Préstamos Activos -->
                 <div class="profile-section">
-                    <h3>📖 Reservas y Préstamos Activos</h3>
+                    <h3>Reservas y Préstamos Activos</h3>
                     <?php if (!empty($activos)): ?>
                         <div class="table-responsive">
                             <table>
@@ -115,9 +111,8 @@ $historial = $loansData['historial'];
                     <?php endif; ?>
                 </div>
 
-                <!-- Historial -->
                 <div class="profile-section">
-                    <h3>📜 Historial de Prestaciones</h3>
+                    <h3>Historial de Prestaciones</h3>
                     <?php if (!empty($historial)): ?>
                         <div class="table-responsive">
                             <table>

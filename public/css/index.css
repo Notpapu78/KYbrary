@@ -200,6 +200,7 @@ article p {
     }
 
     #tendencyBooks > h2, #recentBooks > h2 {
+        font-size: 3.2rem;
         margin: auto;
     }
 
@@ -209,11 +210,16 @@ article p {
 
     .cardBook {
         width: 100%;
+        height: 27vh;
         margin-top: 3rem;
     }
 
     .cardBook h2 {
-        font-size: 2.6rem;
+        font-size: 2.4rem;
+    }
+
+    .cardBook p {
+        font-size: 1.8rem;
     }
 }
 
@@ -239,7 +245,7 @@ article p {
     }
 }
 
-@media (min-width:769px) and (max-width:1032px) {
+@media (min-width:769px) and (max-width:1080px) {
     .cardBook {
         width: 26%;
         height: 28vh;

@@ -12,6 +12,7 @@ $recentBooks   = getRecentBooks(3);
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="icons/Pluma.ico" type="image/x-icon">
     <link rel="stylesheet" href="css/common.css">
     <link rel="stylesheet" href="css/index.css">
     <link rel="stylesheet" href="css/sidebar.css">
@@ -29,7 +30,7 @@ $recentBooks   = getRecentBooks(3);
                             Hola, <?php echo htmlspecialchars(explode(' ', trim($_SESSION['user_name']))[0]); ?>
                         </span>
                     <?php else: ?>
-                        <a href="register.php"><button>Registrarse</button></a>
+                        <a href="register.php"><button>Registarse</button></a>
                         <a href="login.php"><button>Acceder</button></a>
                     <?php endif; ?>
                 </div>

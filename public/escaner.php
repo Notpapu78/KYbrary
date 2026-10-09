@@ -6,8 +6,8 @@ if (session_status() === PHP_SESSION_NONE) {
 
 require_once __DIR__ . '/../src/functions.php';
 
-$userRole = strtoupper($_SESSION['user_role'] ?? $_SESSION['rol_name'] ?? $_SESSION['rol_id'] ?? $_SESSION['roles_rol_id'] ?? 'USUARIO');
-$isAdminOrLibrarian = in_array($userRole, ['ADMIN', 'ADMINISTRADOR', 'BIBLIOTECARIO', '1', '2', '3']);
+$userRole = strtoupper((string)($_SESSION['user_role'] ?? $_SESSION['rol_name'] ?? $_SESSION['rol_id'] ?? $_SESSION['roles_rol_id'] ?? '1'));
+$isAdminOrLibrarian = in_array($userRole, ['3', 'BIBLIOTECARIO', 'ADMIN', 'ADMINISTRADOR']);
 
 if (!$isAdminOrLibrarian) {
     header('Location: index.php');
@@ -72,6 +72,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="icons/Pluma.ico" type="image/x-icon">
     <title>Estación de Escaneo - KYbrary</title>
     <link rel="stylesheet" href="css/common.css">
     <link rel="stylesheet" href="css/sidebar.css">
@@ -99,7 +100,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     <main>
         <div class="scanner-container">
-            <div>
+            <div class="scanner-header">
                 <h2>📷 Estación de Escaneo</h2>
                 <p>Selecciona el modo de operación, completa los datos requeridos y pasa el código de barras.</p>
             </div>
@@ -136,8 +137,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     <div class="scan-input-group">
                         <label for="dias_prestamo">Días de Préstamo:</label>
                         <select id="dias_prestamo" name="dias_prestamo">
-                            <option value="3" selected>3 Días </option>
-                            <option value="7">7 Días (1 Semanas)</option>
+                            <option value="3" selected>3 Días</option>
+                            <option value="7">7 Días (1 Semana)</option>
                             <option value="14">14 Días (2 Semanas)</option>
                             <option value="21">21 Días (3 Semanas)</option>
                             <option value="30">30 Días (1 Mes)</option>
@@ -159,7 +160,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     <p><strong>ISBN:</strong> <?php echo htmlspecialchars($libroConsultado['BOOK_ISBN'] ?? $libroConsultado['book_isbn'] ?? ''); ?></p>
                     <p><strong>Autor:</strong> <?php echo htmlspecialchars($libroConsultado['BOOK_AUTHOR'] ?? $libroConsultado['book_author'] ?? ''); ?></p>
                     <p><strong>Categoría:</strong> <?php echo htmlspecialchars($libroConsultado['CATEGORY_NAME'] ?? $libroConsultado['category_name'] ?? 'General'); ?></p>
-                    <p><strong>Stock Disponible:</strong> <strong><?php echo $libroConsultado['STOCK'] ?? $libroConsultado['stock'] ?? 0; ?></strong> copias</p>
+                    <p><strong>Stock Disponible:</strong> <span class="stock-highlight"><?php echo $libroConsultado['STOCK'] ?? $libroConsultado['stock'] ?? 0; ?> copias</span></p>
                 </div>
             <?php endif; ?>
         </div>

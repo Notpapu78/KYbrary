@@ -1,8 +1,16 @@
+<?php
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
+
+$googleData = $_SESSION['google_pending'] ?? null;
+?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="icons/Pluma.ico" type="image/x-icon">
     <link rel="stylesheet" href="css/common.css">
     <link rel="stylesheet" href="css/login-register.css">
     <title>Registrarse - KYbrary</title>
@@ -12,6 +20,12 @@
         <section id="register-form">
             <form action="process_register.php" method="POST">
                 <h1>Registrarse</h1>
+
+                <?php if ($googleData): ?>
+                    <p style="color: #00ffff; text-align: center; margin-bottom: 1.5rem; font-size: 2.4rem; background: rgba(0, 255, 255, 0.1); padding: 0.8rem; border-radius: 6px; border: 1px solid rgba(0, 255, 255, 0.3);">
+                        Completa tu RUT y contraseña para vincular tu cuenta de Google (<b><?php echo htmlspecialchars($googleData['email']); ?></b>).
+                    </p>
+                <?php endif; ?>
 
                 <?php if (isset($_GET['error'])): ?>
                     <p style="color: #ff5252; text-align: center; margin-bottom: 1.5rem; font-size: 0.95rem; background: rgba(255, 82, 82, 0.1); padding: 0.8rem; border-radius: 6px; border: 1px solid rgba(255, 82, 82, 0.3);">
@@ -26,11 +40,11 @@
                 </fieldset>
 
                 <fieldset class="input-box">
-                    <input type="text" id="name" name="name" placeholder="Nombres" required>
+                    <input type="text" id="name" name="name" placeholder="Nombres" value="<?php echo htmlspecialchars($googleData['name'] ?? ''); ?>" required>
                 </fieldset>
 
                 <fieldset class="input-box">
-                    <input type="text" id="surname" name="surname" placeholder="Apellidos" required>
+                    <input type="text" id="surname" name="surname" placeholder="Apellidos" value="<?php echo htmlspecialchars($googleData['surname'] ?? ''); ?>" required>
                 </fieldset>
 
                 <fieldset class="input-box">
@@ -38,9 +52,10 @@
                         type="email" 
                         id="email" 
                         name="email" 
-                        placeholder="Correo (@liceorbl.cl)" 
-                        pattern=".+@liceorbl\.cl" 
-                        title="Debes ingresar un correo con dominio @liceorbl.cl" 
+                        placeholder="Correo (@liceorbl.cl o @liceosofofa.cl)" 
+                        value="<?php echo htmlspecialchars($googleData['email'] ?? ''); ?>"
+                        pattern=".+@(liceorbl\.cl|liceosofofa\.cl)" 
+                        title="Debes ingresar un correo institucional (@liceorbl.cl o @liceosofofa.cl)" 
                         required>
                 </fieldset>
 
