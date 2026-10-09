@@ -1,95 +1,92 @@
-/* Inicio de la introduccion */
+/* Inicio de la introducción */
 body {
     background-image: url(../media/a.jpg);
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
     background-attachment: fixed;
-
     color: white;
     backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
 }
 
 #introduction {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 1rem;
-
-    margin: 4rem auto 0rem;
+    gap: 2rem;
+    margin: 3rem auto 0;
     width: 80vw;
-    border: 0.2rem dotted rgba(245, 245, 245, 0.068);
-    padding: 2rem;
+    max-width: 1100px;
+    border: 0.2rem dotted rgba(245, 245, 245, 0.2);
+    padding: 2.5rem;
     border-radius: 1rem;
-
     animation: apparition 0.5s ease-out;
     transition: all 0.6s ease-in-out;
+    box-sizing: border-box;
 }
 
 #introduction:hover {
     border: 0.2rem dotted whitesmoke;
-    background-color: #e5e5e52f;
+    background-color: rgba(229, 229, 229, 0.15);
 }
 
 article h1 {
-    font-size: 7.8rem;
+    font-size: 5.5rem;
+    margin-bottom: 1rem;
 }
 
 article p {
-    font-size: 3.8rem;
+    font-size: 2.6rem;
+    line-height: 1.3;
 }
 
 .cardApply {
     display: flex;
     justify-content: center;
     align-items: center;
-}
-
-.cardApply {
-    display: flex;
-    align-items: center;
     flex-direction: column;
-
-    padding: 0.8rem 1.2rem;
-    border: var(--azul_neon) 4px solid;
+    padding: 1.5rem;
+    border: var(--carmesi) 3px solid;
     border-radius: 0.8rem;
     animation: apparition 0.8s ease-out;
+    text-align: center;
 }
 
 .cardApply p {
-    margin: 0.8rem;
-    font-size: 3.4rem;
+    margin: 0.8rem 0;
+    font-size: 2.4rem;
     color: #FFF;
 }
 
 .cardApply button {
-    margin: 0.8rem auto;
-    font-size: 2rem;
-    padding: 1rem;
-    border-radius: 0.4rem;
+    margin: 1rem auto 0;
+    font-size: 1.8rem;
+    padding: 0.8rem 1.6rem;
+    border-radius: 0.6rem;
     background-color: rgba(255, 255, 255, 0.205);
     color: white;
     border: var(--gris_plata) 0.2rem solid;
-    transition: background-color 0.7s ease-out;
+    transition: background-color 0.4s ease-out;
+    cursor: pointer;
 }
 
 .cardApply button:hover {
     background-color: var(--carmesi);
 }
-/* Fin de la introduccion */
 
-
-/* contenido principal */
+/* Contenido principal */
 #tendencyBooks, #recentBooks {
     width: 80vw;
+    max-width: 1100px;
     padding: 1.2rem;
-    margin: 6rem auto 4rem;
-
+    margin: 4rem auto 2rem;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    box-sizing: border-box;
 }
 
 #tendencyBooks > h2, #recentBooks > h2 {
-    margin: 3rem 0 3rem 3rem;
-    font-size: 40px;
+    margin: 2rem 0;
+    font-size: 3.2rem;
     font-weight: bold;
     font-style: italic;
     animation: apparition 1s ease-in-out;
@@ -97,166 +94,128 @@ article p {
 
 .book-wrapper {
     display: flex;
-    justify-content: space-around;
-    align-items: center;
-    flex-direction: row;
+    justify-content: space-between;
+    align-items: stretch;
+    flex-wrap: wrap;
+    gap: 2rem;
 }
 
-#tendencyBooks article:nth-child(1) {
-    animation: entranceVer 0.6s ease-out;
-}
-
-#tendencyBooks article:nth-child(2) {
-    animation: entranceVer 0.75s ease-out;
-}
-
-#tendencyBooks article:nth-child(3) {
-    animation: entranceVer 0.9s ease-out;
-}
+#tendencyBooks article:nth-child(1) { animation: entranceVer 0.6s ease-out; }
+#tendencyBooks article:nth-child(2) { animation: entranceVer 0.75s ease-out; }
+#tendencyBooks article:nth-child(3) { animation: entranceVer 0.9s ease-out; }
 
 .cardBook {
-    width: 20%;
-    height: 28vh;
-    padding: 0.8rem;
+    flex: 1;
+    min-width: 220px;
+    padding: 1.5rem;
     border: var(--carmesi) 0.2rem solid;
     text-align: center;
     border-radius: 1rem;
     position: relative;
     backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
     transition: all 0.4s ease-out;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
 .cardBook div { 
-    background-color: #30303060;
-    border-radius: 0.4rem;
+    background-color: rgba(48, 48, 48, 0.4);
+    border-radius: 0.6rem;
+    padding: 0.8rem;
+    margin-bottom: 0.8rem;
 }
 
 .cardBook:hover {
-    background-color: red;
-    backdrop-filter: blur(300px);
-    transform: scale(1.01);
-    box-shadow: 5px 5px 22px #000000de;
+    background-color: var(--carmesi);
+    transform: translateY(-4px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.7);
 }
 
 .cardBook h2 {
-    font-size: 3rem;
+    font-size: 2.2rem;
+    margin: 0.5rem 0;
+    word-break: break-word;
 }
 
 .cardBook p {
-    font-size: 2rem;
+    font-size: 1.6rem;
+    word-break: break-word;
 }
 
 .cardBook img {
-    width: 12rem;
-    height: 10rem;
+    width: 8rem;
+    height: 8rem;
+    object-fit: contain;
 }
 
 #recentBooks > h2 {
     animation: apparition 2s ease-in-out;
 }
 
-#recentBooks .cardBook {
-    border: var(--carmesi) 0.2rem solid;
-}
+#recentBooks article:nth-child(1) { animation: entranceR 1s ease-in-out; }
+#recentBooks article:nth-child(2) { animation: entranceR 1.5s ease-in-out; }
+#recentBooks article:nth-child(3) { animation: entranceR 2s ease-in-out; }
 
-#recentBooks article:nth-child(1) {
-    animation: entranceR 1s ease-in-out;
-}
+/* Media Queries Ajustadas para Celulares */
+@media (max-width: 600px) {
+    #introduction {
+        grid-template-columns: 1fr;
+        width: 92vw;
+        padding: 1.2rem;
+        margin-top: 1.5rem;
+        gap: 1.5rem;
+    }
 
-#recentBooks article:nth-child(2) {
-    animation: entranceR 1.5s ease-in-out;
-}
-
-#recentBooks article:nth-child(3) {
-    animation: entranceR 2s ease-in-out;
-}
-
-/*Fin del contenido principal*/
-
-/* Media queries */
-
-@media (max-width:500px) {
     article h1 {
-        font-size: 3.6rem;
+        font-size: 2.8rem;
         text-align: center;
     }
 
     article p {
         text-align: center;
-        font-size: 2.6rem;
+        font-size: 1.6rem;
     }
 
     .cardApply p {
-        font-size: 2.6rem;
+        font-size: 1.6rem;
     }
 
-    #introduction {
-        grid-template-columns: auto;
-        grid-template-rows: 1fr 1fr;
+    .cardApply button {
+        font-size: 1.4rem;
+        padding: 0.6rem 1.2rem;
     }
 
-    .cardApply div {
-        width: 100%;
+    #tendencyBooks, #recentBooks {
+        width: 92vw;
+        margin: 2rem auto 1rem;
+        padding: 0.5rem;
     }
 
     #tendencyBooks > h2, #recentBooks > h2 {
-        font-size: 3.2rem;
-        margin: auto;
+        font-size: 2.2rem;
+        margin: 1rem 0;
+        text-align: center;
     }
 
     .book-wrapper {
         flex-direction: column;
+        gap: 1.2rem;
     }
 
     .cardBook {
         width: 100%;
-        height: 27vh;
-        margin-top: 3rem;
+        min-width: 0;
+        padding: 1.2rem;
     }
 
     .cardBook h2 {
-        font-size: 2.4rem;
-    }
-
-    .cardBook p {
         font-size: 1.8rem;
     }
-}
-
-@media (min-width:501px) and (max-width:768px) {
-    article h1 {
-        font-size: 5rem;
-    }
-
-    article p {
-        font-size: 3.4rem;
-    }
-
-    .cardBook {
-        width: 28%;
-    }
-
-    .cardBook h2 {
-        font-size: 2.2rem;
-    }
 
     .cardBook p {
-        font-size: 1.6rem;
+        font-size: 1.4rem;
     }
 }
-
-@media (min-width:769px) and (max-width:1080px) {
-    .cardBook {
-        width: 26%;
-        height: 28vh;
-    }
-
-    .cardBook h2 {
-        font-size: 2.6rem;
-    }
-
-    .cardBook p {
-        font-size: 1.6rem;
-    }
-}
-/*End Media queries*/

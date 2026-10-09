@@ -17,97 +17,90 @@ html {
     box-sizing: border-box;
 }
 
+body {
+    font-family: "Story Script", sans-serif;
+    min-height: 100vh;
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+}
+
 nav {
     border: var(--carmesi) 0.2rem solid;
     background-color: #b10e0e5e;
     padding: 1.2rem;
-
-    display: grid;
-    grid-template-columns: 90% 10%;
-}
-
-span {
-    font-size: 2.8rem;
-}
-
-body {
-    font-family: "Story Script", sans-serif;
-    min-height: 100vh;
-
-    display: grid;
-    grid-template-rows: auto 1fr auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 nav a {
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 
-.pageTitle, .menuItem {
+.pageTitle {
     background-color: #d6101070;
+    letter-spacing: 0.4rem;
+    padding: 0.8rem 1.8rem;
+    border-radius: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex: 1;
+    margin-right: 1rem;
 }
 
-.pageTitle {
-    letter-spacing: 0.8rem;
-    padding: 0 2rem;
-    border-radius: 1rem 0 0 1rem;
-
-    display: flex;
-    justify-content: space-between;
+.pageTitle a {
+    font-size: 4.5rem;
+    color: currentColor;
+    text-decoration: none;
 }
 
 .pageTitle span {
+    font-size: 2.2rem;
     color: whitesmoke;
-    margin-right: 1.2rem;
+    margin-right: 0.8rem;
 }
 
 .pageTitle div {
     display: flex;
     align-items: center;
-    gap: 1rem;
-}
-
-.pageTitle div a {
-    display: flex;
-    align-items: center;
+    justify-content: center;
+    gap: 0.8rem;
 }
 
 .pageTitle button {
     cursor: pointer;
-    border: var(--gris_plata) 0.2rem solid;
+    border: var(--gris_plata) 0.15rem solid;
     background-color: rgba(255, 255, 255, 0.205);
     color: white;
-    font-size: 2rem;
-    padding: 1.2rem;
-    border-radius: 1rem;
-
-    transition: background-color 0.5s ease-out;
+    font-size: 1.6rem;
+    padding: 0.6rem 1.2rem;
+    border-radius: 0.8rem;
+    transition: background-color 0.4s ease-out;
 }
 
 .pageTitle button:hover {
     background-color: var(--carmesi);
 }
 
-.pageTitle a {
-    font-size: 7rem;
-    color: currentColor;
-}
-
-a {
-    text-decoration: none;
-    color: #d0adf0;
-}
-
 .menuItem {
-    border-radius: 0 1rem 1rem 0;
+    background-color: #d6101070;
+    border-radius: 1rem;
+    padding: 0.6rem;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
+.menu-btn {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+}
+
 hr {
     border: none;
     height: 1rem;
-    text-align: center;
 }
 
 button {
@@ -127,13 +120,18 @@ input {
 
 footer {
     width: 85vw;
-    margin: 4rem auto 0;
+    margin: 3rem auto 0;
     border-radius: 1.5rem 1.5rem 0 0;
-
-    padding: 0.8rem;
-    font-size: 2.2rem;
+    padding: 1.2rem;
+    font-size: 1.8rem;
     background-color: var(--carmesi);
     text-align: center;
+    color: white;
+}
+
+footer a {
+    color: #d0adf0;
+    text-decoration: none;
 }
 
 @keyframes apparition {
@@ -161,42 +159,44 @@ footer {
     }
 }
 
-/* MQ */
-
-@media (max-width:500px) {
-    .pageTitle {
-        padding: 0 0.6rem;
-        letter-spacing: 0.2rem;
+@media (max-width: 600px) {
+    nav {
+        padding: 0.8rem;
     }
 
-    nav {
-        grid-template-columns: 80% 20%;
+    .pageTitle {
+        letter-spacing: 0.1rem;
+        padding: 0.8rem 1rem;
+        margin-right: 0.6rem;
     }
 
     .pageTitle a {
-        font-size: 3.6rem;
-        margin: 0 0.4rem;
-
-        display: flex;
-        align-items: center;
-    }
-
-    .pageTitle div {
-        flex-direction: column;
-        gap: 0;
-    }
-
-    .pageTitle div button {
-        font-size: 1.2rem;
-        padding: 0.6rem;
+        font-size: 2.2rem;
     }
 
     .pageTitle span {
-        font-size: 2.4rem;
-        margin-right: 0.6rem;
+        font-size: 1.3rem;
+        margin-right: 0.4rem;
+    }
+
+    .pageTitle div {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        gap: 0.5rem;
+    }
+
+    .pageTitle button {
+        font-size: 1rem;
+        padding: 0.4rem 0.6rem;
+        border-radius: 0.6rem;
+        white-space: nowrap;
     }
 
     footer {
         width: 100vw;
+        font-size: 1.4rem;
+        border-radius: 0;
+        padding: 1rem 0.5rem;
     }
 }

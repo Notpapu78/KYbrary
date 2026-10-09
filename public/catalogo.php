@@ -1,5 +1,7 @@
 <?php 
-session_start();
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
 require_once __DIR__ . '/../src/functions.php';
 
 $mensajeReserva = null;
@@ -38,7 +40,18 @@ $categories = getCategories();
     <header>
         <nav>
             <div class="pageTitle">
-                <h1><a href="index.php">KYbrary</a></h1>
+                <a href="index.php">KYbrary</a>
+
+                <div>
+                    <?php if (isset($_SESSION['user_name'])): ?>
+                        <span>
+                            Hola, <?php echo htmlspecialchars(explode(' ', trim($_SESSION['user_name']))[0]); ?>
+                        </span>
+                    <?php else: ?>
+                        <a href="register.php"><button>Registarse</button></a>
+                        <a href="login.php"><button>Acceder</button></a>
+                    <?php endif; ?>
+                </div>
             </div>
             <div class="menuItem">
                 <button class="menu-btn" id="openBtn">
@@ -46,9 +59,8 @@ $categories = getCategories();
                 </button>
             </div>
         </nav>
+        <?php renderSidebar(); ?>
     </header>
-
-    <?php renderSidebar(); ?>
 
     <main>
         <section id="bookScroller">

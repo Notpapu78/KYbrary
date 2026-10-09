@@ -1,11 +1,17 @@
+/* General y Resets de caja */
+* {
+    box-sizing: border-box;
+}
+
 body {
     background-image: url(../media/bi.jpg);
     color: white;
     backdrop-filter: blur(12px);
+    margin: 0;
+    min-height: 100vh;
 }
 
 /* Nav */
-
 .pageTitle {
     font-size: 4rem;
     letter-spacing: 0.8rem;
@@ -21,61 +27,68 @@ a {
     justify-content: center;
     align-items: center;
 }
-/*Nav*/
 
+/* Contenedor del Catálogo */
 #bookScroller {
     width: 94vw;
+    max-width: 1200px;
     border: var(--carmesi) solid 4px;
-    margin: 6rem auto 8rem;
-    border-radius: 0 0 1rem 1rem;
+    margin: 2rem auto 4rem;
+    border-radius: 1rem;
+    overflow: hidden;
 }
 
+/* Header del Buscador */
 .searcher {
     background-color: #df10109a;
-    padding: 0.4rem 2rem;
-
+    padding: 1rem 2rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
 }
 
 .searcher h1 {
-    font-size: 4.5rem;
-    letter-spacing: 0.4rem;
+    font-size: 3.5rem;
+    letter-spacing: 0.3rem;
+    margin: 0;
 }
 
 label {
     display: flex;
     align-items: center;
+    gap: 0.8rem;
+    flex-wrap: wrap;
 }
 
 label img {
-    width: 4.2rem;
-    height: 4.2em;
+    width: 3.2rem;
+    height: 3.2rem;
 }
 
-
 label input {
-    padding: 0.8rem;
-    font-size: 2rem;
+    padding: 0.8rem 1.2rem;
+    font-size: 1.6rem;
     border-radius: 0.8rem;
     border: white 0.1rem solid;
+    background: rgba(0, 0, 0, 0.3);
+    color: white;
 }
 
 input::placeholder {
-    color: white;
+    color: rgba(255, 255, 255, 0.8);
 }
 
 select {
-    width: 16vw;
-    border-radius: 1rem;
-    background-color: transparent;
-    border: 0.1rem solid currentColor;
+    min-width: 180px;
+    border-radius: 0.8rem;
+    background-color: rgba(0, 0, 0, 0.4);
+    border: 0.1rem solid white;
     color: white;
-    font-size: 2rem;
+    font-size: 1.6rem;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-    margin-left: 1rem;
-    padding: 0.8rem;
+    padding: 0.8rem 1.2rem;
 }
 
 select:focus {
@@ -83,102 +96,99 @@ select:focus {
 }
 
 option {
-    background-color: var(--carmesi);
+    background-color: #222;
+    color: white;
 }
 
+/* Grilla de Libros Adaptable */
 .bookLibrary {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: auto;
-    
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
     backdrop-filter: blur(14px);
     background-color: #fdfbd415;
-    height: 60vh;
+    max-height: 70vh;
     gap: 2rem;
-    padding: 2.4rem 0.8rem;
-
-    overflow-y: scroll;
+    padding: 2rem 1.5rem;
+    overflow-y: auto;
     overflow-x: hidden;
 }
 
 .cBook {
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
     flex-direction: column;
 
-    width: 90%;
-    margin: auto;
-    padding: 1.2rem;
+    width: 100%;
+    margin: 0 auto;
+    padding: 1.5rem;
     border-radius: 0.8rem;
     border: var(--azul_neon) 2px solid;
     background-color: #5c102486;
 
-    transition: all 0.45s ease-in-out;
-}
-
-small {
-    transition: all 0.45s ease-in-out;
+    transition: all 0.3s ease-in-out;
+    text-align: center;
 }
 
 .cBook:hover {
-    transform: translate(1.01);
-    background-color: var(--cream);
+    transform: scale(1.02);
+    background-color: var(--cream, #fff8e7);
     color: black;
-    box-shadow: 2px 3px 16px black;
+    box-shadow: 2px 3px 16px rgba(0, 0, 0, 0.6);
+}
 
-    small {
-        color: black;
-    }
+.cBook:hover small, 
+.cBook:hover p, 
+.cBook:hover h1 {
+    color: black;
 }
 
 .cBook form {
     margin-top: 1rem;
     width: 100%;
-
-    text-align: center;
 }
 
 .cBook h1 {
-    font-size: 4.2rem;
+    font-size: 2.4rem;
+    margin: 0.8rem 0 0.4rem;
+    word-break: break-word;
 }
 
 .cBook p {
-    font-size: 2.2rem;
+    font-size: 1.6rem;
+    margin: 0.4rem 0;
+    word-break: break-word;
 }
 
 .cBook p, .cBook small {
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 
-.cBook small {
-    font-size: 1.6rem;
-}
-
 .cBook img {
-    width: 9rem;
-    height: 9rem;
+    width: 8rem;
+    height: 8rem;
+    object-fit: contain;
 }
 
 .cBook small {
-    color: var(--gris_plata);
-    font-size: 1.4rem;
-    margin-top: 0.5rem; 
+    color: var(--gris_plata, #ccc);
+    font-size: 1.3rem;
+    margin-top: 0.4rem; 
+    display: block;
 }
 
 .cBook button {
     cursor: pointer;
-    width: 60%;
+    width: 100%;
     background-color: transparent;
-    margin: 1rem auto 0;
-    border: 0.1rem var(--carmesi) solid;
-    padding: 1rem;
-    border-radius: 1rem;
-    font-size: 1.8rem;
+    margin-top: 1rem;
+    border: 0.15rem var(--carmesi) solid;
+    padding: 0.8rem 1.2rem;
+    border-radius: 0.8rem;
+    font-size: 1.5rem;
     font-weight: bold;
     color: white;
-
-    transition: all 0.5s ease-in-out;
+    transition: all 0.3s ease-in-out;
 }
 
 .cBook button:hover {
@@ -186,7 +196,83 @@ small {
     color: white;
 }
 
+.cBook:hover button {
+    border-color: var(--carmesi);
+    color: black;
+}
+
+.cBook:hover button:hover {
+    color: white;
+}
+
 hr {
     border: none;
-    height: 4rem;
+    height: 2rem;
+}
+
+/* Media Query Responsiva para Celulares */
+@media (max-width: 650px) {
+    #bookScroller {
+        width: 96vw;
+        margin: 1rem auto 2rem;
+        border-width: 2px;
+    }
+
+    .searcher {
+        flex-direction: column;
+        align-items: stretch;
+        padding: 1.2rem;
+        gap: 0.8rem;
+    }
+
+    .searcher h1 {
+        font-size: 2.6rem;
+        text-align: center;
+    }
+
+    label {
+        flex-direction: column;
+        align-items: stretch;
+        width: 100%;
+        gap: 0.8rem;
+    }
+
+    label img {
+        display: none; /* Oculta la lupa en pantallas pequeñas para ganar espacio */
+    }
+
+    label input, select {
+        width: 100%;
+        margin-left: 0;
+        font-size: 1.4rem;
+        padding: 0.8rem;
+    }
+
+    .bookLibrary {
+        grid-template-columns: repeat(auto-fill, minmax(min(100%, 220px), 1fr));
+        gap: 1.2rem;
+        padding: 1rem 0.8rem;
+        max-height: 65vh;
+    }
+
+    .cBook {
+        padding: 1rem;
+    }
+
+    .cBook h1 {
+        font-size: 1.8rem;
+    }
+
+    .cBook p {
+        font-size: 1.3rem;
+    }
+
+    .cBook small {
+        font-size: 1.1rem;
+    }
+
+    .cBook button {
+        font-size: 1.3rem;
+        padding: 0.6rem;
+    }
 }

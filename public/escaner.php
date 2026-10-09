@@ -101,7 +101,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <main>
         <div class="scanner-container">
             <div class="scanner-header">
-                <h2>📷 Estación de Escaneo</h2>
+                <h2>Estación de Escaneo</h2>
                 <p>Selecciona el modo de operación, completa los datos requeridos y pasa el código de barras.</p>
             </div>
 
@@ -116,15 +116,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 <div class="mode-selector">
                     <label>
                         <input type="radio" name="modo" value="consultar" <?php echo $modoActual === 'consultar' ? 'checked' : ''; ?> onchange="toggleFormFields()">
-                        <span>🔍 Consultar</span>
+                        <span>Consultar</span>
                     </label>
                     <label>
                         <input type="radio" name="modo" value="prestamo" <?php echo $modoActual === 'prestamo' ? 'checked' : ''; ?> onchange="toggleFormFields()">
-                        <span>📖 Préstamo</span>
+                        <span>Préstamo</span>
                     </label>
                     <label>
                         <input type="radio" name="modo" value="devolucion" <?php echo $modoActual === 'devolucion' ? 'checked' : ''; ?> onchange="toggleFormFields()">
-                        <span>🔄 Devolución</span>
+                        <span>Devolución</span>
                     </label>
                 </div>
 
