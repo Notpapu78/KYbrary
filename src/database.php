@@ -1,8 +1,8 @@
 <?php
 $host = "127.0.0.1";
 $port = "5432";
-$user = "postgres";
-$dbname = "kybrary";
+$user = "waos";
+$dbname = "test_yuyito";
 $password = "022009";
 
 try {

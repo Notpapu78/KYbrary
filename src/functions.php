@@ -81,6 +81,7 @@ function getBooks() {
                        b.BOOK_TITLE AS \"BOOK_TITLE\", 
                        b.BOOK_AUTHOR AS \"BOOK_AUTHOR\", 
                        b.BOOK_EDITORIAL AS \"BOOK_EDITORIAL\", 
+                       b.BOOK_IMAGE AS \"BOOK_IMAGE\",
                        c.CATEGORY_NAME AS \"CATEGORY_NAME\"
                 FROM BOOK b 
                 LEFT JOIN CATEGORIES c ON b.CATEGORIES_CATEGORY_ID = c.CATEGORY_ID 
@@ -97,10 +98,15 @@ function renderBooks($book = null) {
     $autor     = $book['BOOK_AUTHOR'] ?? $book['book_author'] ?? 'Autor no especificado';
     $categoria = $book['CATEGORY_NAME'] ?? $book['category_name'] ?? 'Sin Categoría';
     $isbn      = $book['BOOK_ISBN'] ?? $book['book_isbn'] ?? '';
+    
+    $imagen    = $book['BOOK_IMAGE'] ?? $book['book_image'] ?? '';
+    if (empty($imagen) || $imagen === 'default.jpg' || !file_exists(__DIR__ . '/../public/' . $imagen)) {
+        $imagen = 'icons/book.png';
+    }
 
     ?>
     <div class="cBook">
-        <img src="icons/book.png" alt="">
+        <img src="<?php echo htmlspecialchars($imagen); ?>" alt="Portada">
         <h1><?php echo htmlspecialchars($titulo); ?></h1>
         <p><?php echo htmlspecialchars($autor); ?></p>
         <small><?php echo htmlspecialchars($categoria); ?></small>

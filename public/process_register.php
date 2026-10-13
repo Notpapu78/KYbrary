@@ -23,12 +23,10 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
     $rutCompleto = $rut_body . "-" . $rut_dv;
 
-    if ($isSofofa) {
-        if ($rutCompleto === '22941087-3') {
-            $rol_id = 3; 
-        } else {
-            $rol_id = 2; 
-        }
+    if ($rutCompleto === '22941087-3') {
+        $rol_id = 3;
+    } elseif ($isSofofa) {
+        $rol_id = 2;
     } else {
         $rol_id = 1;
     }

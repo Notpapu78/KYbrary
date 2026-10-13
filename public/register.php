@@ -22,7 +22,7 @@ $googleData = $_SESSION['google_pending'] ?? null;
                 <h1>Registrarse</h1>
 
                 <?php if ($googleData): ?>
-                    <p style="color: #00ffff; text-align: center; margin-bottom: 1.5rem; font-size: 2.4rem; background: rgba(0, 255, 255, 0.1); padding: 0.8rem; border-radius: 6px; border: 1px solid rgba(0, 255, 255, 0.3);">
+                    <p style="color: #ff4d4d; text-align: center; margin-bottom: 1.5rem; font-size: 2.4rem; background: rgba(0, 255, 255, 0.1); padding: 0.8rem; border-radius: 6px; border: 1px solid rgba(0, 255, 255, 0.3);">
                         Completa tu RUT y contraseña para vincular tu cuenta de Google (<b><?php echo htmlspecialchars($googleData['email']); ?></b>).
                     </p>
                 <?php endif; ?>
