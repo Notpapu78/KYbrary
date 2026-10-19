@@ -57,8 +57,9 @@ $googleRedirectUri = defined('GOOGLE_REDIRECT_URI') ? GOOGLE_REDIRECT_URI : '';
                     data-type="standard"
                     data-shape="pill"
                     data-theme="outline"
-                    data-text="signin_with"
+                    data-text="signin"
                     data-size="large"
+                    data-width="240"
                     data-locale="es">
                 </div>
             </form>

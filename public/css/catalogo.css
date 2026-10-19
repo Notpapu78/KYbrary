@@ -9,9 +9,17 @@ body {
     backdrop-filter: blur(12px);
     margin: 0;
     min-height: 100vh;
+    overflow-x: hidden; /* Evita cualquier desplazamiento horizontal de la página */
 }
 
-/* Nav */
+/* Nav / Header general */
+header, .navbar {
+    width: 100%;
+    max-width: 100vw;
+    box-sizing: border-box;
+    margin: 0 auto;
+}
+
 .pageTitle {
     font-size: 4rem;
     letter-spacing: 0.8rem;
@@ -36,6 +44,7 @@ a {
     margin: 2rem auto 4rem;
     border-radius: 1rem;
     overflow: hidden;
+    box-sizing: border-box;
 }
 
 /* Header del Buscador */
@@ -47,6 +56,8 @@ a {
     align-items: center;
     flex-wrap: wrap;
     gap: 1rem;
+    box-sizing: border-box;
+    width: 100%;
 }
 
 .searcher h1 {
@@ -74,6 +85,7 @@ label input {
     border: white 0.1rem solid;
     background: rgba(0, 0, 0, 0.3);
     color: white;
+    box-sizing: border-box;
 }
 
 input::placeholder {
@@ -89,6 +101,7 @@ select {
     font-size: 1.6rem;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     padding: 0.8rem 1.2rem;
+    box-sizing: border-box;
 }
 
 select:focus {
@@ -111,6 +124,8 @@ option {
     padding: 2rem 1.5rem;
     overflow-y: auto;
     overflow-x: hidden;
+    box-sizing: border-box;
+    width: 100%;
 }
 
 .cBook {
@@ -128,6 +143,7 @@ option {
 
     transition: all 0.3s ease-in-out;
     text-align: center;
+    box-sizing: border-box;
 }
 
 .cBook:hover {
@@ -146,6 +162,7 @@ option {
 .cBook form {
     margin-top: 1rem;
     width: 100%;
+    box-sizing: border-box;
 }
 
 .cBook h1 {
@@ -189,6 +206,7 @@ option {
     font-weight: bold;
     color: white;
     transition: all 0.3s ease-in-out;
+    box-sizing: border-box;
 }
 
 .cBook button:hover {
@@ -210,16 +228,22 @@ hr {
     height: 2rem;
 }
 
-/* Media Query Responsiva para Celulares */
+.alert {
+    font-size: 2.4rem;
+}
+
+/* Media Query Responsiva para Celulares y Pantallas Pequeñas (320px) */
 @media (max-width: 650px) {
     body {
-        overflow-x: hidden; /* Evita cualquier desplazamiento horizontal de la página */
+        margin: 0;
+        padding: 0;
+        overflow-x: hidden;
     }
 
     #bookScroller {
-        width: 92%; /* Reducimos ligeramente el ancho para que los bordes entren bien */
+        width: 95vw;
         max-width: 100%;
-        margin: 1rem auto; /* 'auto' a los lados centra perfectamente el contenedor */
+        margin: 1rem auto;
         border-width: 2px;
         box-sizing: border-box;
     }
@@ -234,7 +258,7 @@ hr {
     }
 
     .searcher h1 {
-        font-size: 2.4rem;
+        font-size: 2.2rem;
         text-align: center;
         width: 100%;
         margin: 0;
@@ -283,99 +307,6 @@ hr {
     }
 
     .cBook h1 {
-        font-size: 1.8rem;
-    }
-
-    .cBook p {
-        font-size: 1.3rem;
-    }
-
-    .cBook small {
-        font-size: 1.1rem;
-    }
-
-    .cBook button {
-        font-size: 1.3rem;
-        padding: 0.6rem;
-    }
-}
-
-/* Media Query Responsiva Definitiva para Celulares y Pantallas Pequeñas */
-@media (max-width: 480px) {
-    body {
-        margin: 0;
-        padding: 0 8px; /* Margen de seguridad simétrico en los costados de la pantalla */
-        box-sizing: border-box;
-        overflow-x: hidden;
-    }
-
-    #bookScroller {
-        width: 100% !important;
-        margin: 0.8rem auto !important;
-        border-width: 2px;
-        border-radius: 0.8rem;
-        box-sizing: border-box;
-    }
-
-    .searcher {
-        flex-direction: column;
-        align-items: center;
-        padding: 0.8rem;
-        gap: 0.6rem;
-        width: 100%;
-        box-sizing: border-box;
-    }
-
-    .searcher h1 {
-        font-size: 2.2rem;
-        text-align: center;
-        width: 100%;
-        margin: 0;
-    }
-
-    .searcher label {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        width: 100%;
-        gap: 0.6rem;
-        margin: 0;
-        padding: 0;
-    }
-
-    .searcher label img {
-        display: none; /* Oculta la lupa en pantallas chicas */
-    }
-
-    .searcher label input, 
-    .searcher select {
-        width: 100% !important;
-        max-width: 100% !important;
-        margin: 0;
-        font-size: 1.3rem;
-        padding: 0.7rem;
-        box-sizing: border-box;
-    }
-
-    .bookLibrary {
-        grid-template-columns: 1fr !important; /* Fuerza una sola columna centrada */
-        gap: 1rem;
-        padding: 0.8rem;
-        max-height: 65vh;
-        box-sizing: border-box;
-        width: 100% !important;
-        overflow-x: hidden;
-    }
-
-    .cBook {
-        width: 100% !important;
-        max-width: 100% !important;
-        margin: 0 auto;
-        padding: 1rem;
-        box-sizing: border-box;
-    }
-
-    .cBook h1 {
         font-size: 1.6rem;
     }
 
@@ -390,5 +321,9 @@ hr {
     .cBook button {
         font-size: 1.2rem;
         padding: 0.6rem;
+    }
+
+    .alert {
+        font-size: 1.6rem;
     }
 }

@@ -68,7 +68,7 @@ $categories = getCategories();
                 <h1>Catálogo</h1>
                 
                 <?php if (!empty($mensajeReserva)): ?>
-                    <div class="alert <?php echo $tipoMensajeReserva; ?>" style="margin-bottom: 15px; padding: 10px; border-radius: 5px; text-align: center;">
+                    <div class="alert <?php echo $tipoMensajeReserva; ?>" style="margin-bottom: 15px; padding: 10px; border-radius: 5px; text-align;">
                         <?php echo htmlspecialchars($mensajeReserva); ?>
                     </div>
                 <?php endif; ?>

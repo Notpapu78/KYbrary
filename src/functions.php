@@ -246,7 +246,7 @@ function processLoanByBarcode($barcode, $rutUser, $diasPrestamo = 7) {
     if (!isset($pdo) || $pdo === null) {
         return [
             'success' => false, 
-            'message' => "Error: No hay conexión con la base de datos (\$pdo es null). Revisa src/database.php."
+            'message' => "Error: No hay conexión con la base de datos (\$pdo is null). Revisa src/database.php."
         ];
     }
 
@@ -273,16 +273,24 @@ function processLoanByBarcode($barcode, $rutUser, $diasPrestamo = 7) {
     try {
         $pdo->beginTransaction();
 
-        // 2. Buscar la unidad o libro
+        // 2. Buscar la unidad física priorizando la que el usuario tiene reservada si escanea el código general/ISBN
         $stmtUnit = $pdo->prepare("
-            SELECT u.unit_id, u.unit_status, b.book_title 
+            SELECT u.unit_id, u.unit_status, b.book_title, b.book_isbn 
             FROM unit u
             JOIN book b ON u.book_book_isbn = b.book_isbn
+            LEFT JOIN detail_book db ON db.unit_unit_id = u.unit_id
+            LEFT JOIN benefits bn ON bn.benefits_id = db.benefits_benefits_id AND bn.users_user_nrun = :rut AND bn.benefits_state = 'RESERVADO'
             WHERE CAST(u.unit_id AS VARCHAR) = :barcode1 OR b.book_isbn = :barcode2
-            ORDER BY CASE WHEN u.unit_status = 'DISPONIBLE' THEN 1 ELSE 2 END
+            ORDER BY 
+                CASE WHEN bn.benefits_id IS NOT NULL THEN 1 ELSE 2 END,
+                CASE WHEN u.unit_status = 'RESERVADO' THEN 1 WHEN u.unit_status = 'DISPONIBLE' THEN 2 ELSE 3 END
             LIMIT 1
         ");
-        $stmtUnit->execute([':barcode1' => $barcodeClean, ':barcode2' => $barcodeClean]);
+        $stmtUnit->execute([
+            ':rut'      => $cleanRut,
+            ':barcode1' => $barcodeClean, 
+            ':barcode2' => $barcodeClean
+        ]);
         $unit = $stmtUnit->fetch(PDO::FETCH_ASSOC);
 
         if (!$unit) {
@@ -293,32 +301,42 @@ function processLoanByBarcode($barcode, $rutUser, $diasPrestamo = 7) {
         $unitId = $unit['unit_id'];
         $unitStatus = strtoupper($unit['unit_status']);
         $bookTitle = $unit['book_title'];
+        $bookIsbn = $unit['book_isbn'];
 
         if ($unitStatus === 'PRESTADO') {
             $pdo->rollBack();
             return ['success' => false, 'message' => "El ejemplar ya se encuentra PRESTADO."];
         }
 
-        // 3. Verificar si tenía reserva previa
+        // 3. Buscar si el usuario tiene una reserva activa para este libro
         $stmtReserva = $pdo->prepare("
-            SELECT bn.benefits_id 
+            SELECT bn.benefits_id, db.unit_unit_id AS reserved_unit_id 
             FROM benefits bn
             JOIN detail_book db ON db.benefits_benefits_id = bn.benefits_id
+            JOIN unit u ON u.unit_id = db.unit_unit_id
             WHERE bn.users_user_nrun = :rut 
-              AND db.unit_unit_id = :unit_id 
+              AND u.book_book_isbn = :isbn
               AND bn.benefits_state = 'RESERVADO'
             LIMIT 1
         ");
-        $stmtReserva->execute([':rut' => $cleanRut, ':unit_id' => $unitId]);
+        $stmtReserva->execute([':rut' => $cleanRut, ':isbn' => $bookIsbn]);
         $reserva = $stmtReserva->fetch(PDO::FETCH_ASSOC);
 
-        if ($unitStatus === 'RESERVADO' && !$reserva) {
+        if ($unitStatus === 'RESERVADO' && (!$reserva || $reserva['reserved_unit_id'] != $unitId)) {
             $pdo->rollBack();
             return ['success' => false, 'message' => "El ejemplar está RESERVADO por otro usuario."];
         }
 
-        // 4. Registrar el préstamo
+        // 4. Registrar o actualizar el préstamo
         if ($reserva) {
+            $oldUnitId = $reserva['reserved_unit_id'];
+            $benefitId = $reserva['benefits_id'];
+
+            if ($oldUnitId != $unitId) {
+                $pdo->prepare("UPDATE unit SET unit_status = 'DISPONIBLE' WHERE unit_id = :old_id")->execute([':old_id' => $oldUnitId]);
+                $pdo->prepare("UPDATE detail_book SET unit_unit_id = :new_id WHERE benefits_benefits_id = :ben_id")->execute([':new_id' => $unitId, ':ben_id' => $benefitId]);
+            }
+
             $stmtUpdateBen = $pdo->prepare("
                 UPDATE benefits 
                 SET benefits_state = 'ACTIVO', date_start = :d_start, date_finish = :d_finish 
@@ -327,7 +345,7 @@ function processLoanByBarcode($barcode, $rutUser, $diasPrestamo = 7) {
             $stmtUpdateBen->execute([
                 ':d_start'  => $dateStart,
                 ':d_finish' => $dateFinish,
-                ':ben_id'   => $reserva['benefits_id']
+                ':ben_id'   => $benefitId
             ]);
         } else {
             $stmtBenefits = $pdo->prepare("
@@ -349,7 +367,6 @@ function processLoanByBarcode($barcode, $rutUser, $diasPrestamo = 7) {
             $stmtDetail->execute([':benefit_id' => $benefitId, ':unit_id' => $unitId]);
         }
 
-        // Actualizar estado a PRESTADO
         $stmtUpdateUnit = $pdo->prepare("UPDATE unit SET unit_status = 'PRESTADO' WHERE unit_id = :unit_id");
         $stmtUpdateUnit->execute([':unit_id' => $unitId]);
 

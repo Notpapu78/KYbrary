@@ -15,7 +15,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     
     $isRbl    = str_ends_with($email, '@liceorbl.cl');
     $isSofofa = str_ends_with($email, '@liceosofofa.cl');
-
+    
     if (!$isRbl && !$isSofofa) {
         header("Location: register.php?error=" . urlencode("Solo se permiten correos institucionales (@liceorbl.cl o @liceosofofa.cl)"));
         exit();

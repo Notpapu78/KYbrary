@@ -14,26 +14,30 @@ body {
     background-repeat: no-repeat;
     background-size: cover;
     background-attachment: fixed;
-    font-size: 16px; /* Base aumentada */
+    font-size: 16px;
+    overflow-x: hidden; /* Evita cualquier desplazamiento horizontal no deseado */
 }
 
 main {
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 3rem 1.5rem;
+    padding: 2rem 0.5rem;
     min-height: calc(100vh - 100px);
+    box-sizing: border-box;
+    width: 100%;
 }
 
-/* Contenedor principal del perfil (Agrandado al 85% de la pantalla) */
+/* Contenedor principal del perfil centrado estrictamente */
 .profile-container {
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-template-rows: auto;
     width: 85vw;
-    max-width: 1600px; /* Límite ampliado para pantallas grandes */
-    margin: auto;
+    max-width: 1600px;
+    margin: 0 auto;
     gap: 2.5rem;
+    box-sizing: border-box;
     animation: sessionAppa 0.7s ease-in-out;
 }
 
@@ -62,19 +66,20 @@ main {
     gap: 1.8rem;
     border: 1px solid var(--border-card);
     text-align: center;
+    box-sizing: border-box;
 }
 
-/* Avatar más grande */
+/* Avatar */
 .profile-avatar {
     width: 160px;
     height: 160px;
     border-radius: 50%;
     object-fit: cover;
     border: 4px solid var(--red-accent);
-    box-shadow: 0 0 20px  rgba(255, 0, 51, 1);
+    box-shadow: 0 0 20px rgba(255, 0, 51, 1);
 }
 
-/* Textos de usuario con tipografía más grande */
+/* Textos de usuario */
 .user-details h2 {
     margin: 0 0 0.8rem 0;
     font-size: 4rem;
@@ -101,7 +106,6 @@ main {
 }
 
 /* Secciones de tablas */
-
 .profile-container #container-books {
     display: flex;
     flex-direction: column;
@@ -115,6 +119,7 @@ main {
     border-radius: 1.2rem;
     padding: 2.5rem;
     border: 1px solid var(--border-card);
+    box-sizing: border-box;
 }
 
 .profile-section h3 {
@@ -139,13 +144,12 @@ main {
     text-decoration: none;
     font-weight: bold;
     font-size: 2rem;
-
     display: inline-flex;
     align-items: center;
     gap: 0.5rem;
 }
 
-/* Tablas con celdas y textos ampliados */
+/* Tablas */
 .table-responsive {
     overflow-x: auto;
 }
@@ -169,7 +173,7 @@ th {
     letter-spacing: 0.05em;
 }
 
-/* Badges de estado más visibles */
+/* Badges de estado */
 .status-badge {
     padding: 0.5rem 0.9rem;
     border-radius: 8px;
@@ -196,18 +200,26 @@ th {
     border: 1px solid rgba(76, 175, 80, 0.4);
 }
 
-/* Adaptación a celulares y pantallas pequeñas */
+/* Adaptación estricta a celulares y pantallas pequeñas (320px) */
 @media (max-width: 900px) {
-    .profile-container {
-        grid-template-columns: 1fr;
-        width: 95vw;
+    main {
+        padding: 1rem 0.2rem;
     }
 
-    .profile-card {
-        padding: 2rem 1rem;
+    .profile-container {
+        grid-template-columns: 1fr;
+        width: 96vw;
+        margin: 0 auto;
+    }
+
+    .profile-card, .profile-section {
+        width: 100%;
+        padding: 1.5rem 1rem;
+        box-sizing: border-box;
+        margin: 0 auto;
     }
 
     .user-details h2 {
-        font-size: 2rem;
+        font-size: 2.2rem;
     }
 }

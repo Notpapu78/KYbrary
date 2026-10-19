@@ -113,7 +113,8 @@ body {
 }
 
 .user-card:hover {
-    background: rgba(255, 255, 255, 0.22);
+    background: rgba(0, 0, 0, 0.75);
+    border-color: #ffffff;
     transform: scale(1.02);
     box-shadow: 0 8px 30px rgba(0, 0, 0, 0.7);
 }
@@ -219,6 +220,11 @@ body {
 
 .btn-unban:hover {
     background-color: #28a745;
+}
+
+.btn-profile {
+    text-decoration: none;
+    color: #ff4d4d;
 }
 
 /* Media Query Responsiva Ajustada para Móviles */
