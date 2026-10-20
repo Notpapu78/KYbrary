@@ -1,4 +1,3 @@
-/* Fondo general sincronizado con el tema */
 body {
     background-image: url('../media/a.jpg');
     background-position: center;
@@ -13,7 +12,6 @@ body {
     padding: 3rem 1rem;
 }
 
-/* Contenedor Principal Blanco Translúcido con Borde Carmesí */
 .user-container {
     width: 85vw;
     max-width: 1250px;
@@ -29,7 +27,6 @@ body {
     box-sizing: border-box;
 }
 
-/* Título de la página */
 .user-container h1 {
     font-size: 5rem;
     text-align: center;
@@ -38,7 +35,6 @@ body {
     text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
 }
 
-/* Barra de Filtros */
 .filter-bar {
     display: flex;
     gap: 1.5rem;
@@ -72,7 +68,6 @@ body {
     box-shadow: 0 0 12px var(--carmesi);
 }
 
-/* Botón Buscar Filtro */
 .filter-bar button {
     padding: 1.2rem 2.5rem;
     border-radius: 0.8rem;
@@ -91,7 +86,6 @@ body {
     border-color: var(--carmesi);
 }
 
-/* Grilla y Tarjetas de Usuario */
 .user-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(min(100%, 320px), 1fr));
@@ -119,13 +113,11 @@ body {
     box-shadow: 0 8px 30px rgba(0, 0, 0, 0.7);
 }
 
-/* Tarjeta Sancionada */
 .user-card.banned {
     border-color: #ff3333;
     background: rgba(177, 14, 14, 0.35);
 }
 
-/* Información del Usuario */
 .user-info h3 {
     margin: 0 0 1rem 0;
     font-size: 3rem;
@@ -146,7 +138,6 @@ body {
     color: #ffffff;
 }
 
-/* Badges de Estado */
 .badge {
     display: inline-block;
     padding: 0.6rem 1.2rem;
