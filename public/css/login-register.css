@@ -11,8 +11,6 @@ body {
     background-size: cover;
 }
 
-/* Login */
-
 #login-form, #register-form {
     width: 25vw;
     animation: sessionAppa 0.7s ease-in-out;
@@ -96,9 +94,6 @@ input::placeholder {
 span {
     font-size: 2rem;
 }
-/**/
-
-/* Register */
 
 #register-form form {
     text-align: center;
@@ -107,7 +102,6 @@ span {
     box-sizing: border-box;
 }
 
-/* Aplicar flex-column solo a los fieldset que no correspondan al RUT */
 #register-form fieldset:not(.rut-container) {
     display: flex;
     flex-direction: column;
@@ -116,7 +110,6 @@ span {
     padding: 0;
 }
 
-/* Contenedor RUT horizontal estricto */
 #register-form .input-box.rut-container {
     display: flex;
     flex-direction: row;
@@ -219,8 +212,6 @@ span {
         transform: translateY(0);
     }
 }
-
-/* MEDIA QUERIES RESPONSIVAS */
 
 @media (max-width:500px) {
     #login-form, #register-form {
