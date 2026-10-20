@@ -1,35 +1,30 @@
-/* 1. RESET GLOBAL DE BORDES Y PADDING (Crucial para que nada se salga) */
 *, *::before, *::after {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
 }
 
-/* 2. PREVENIR SCROLL HORIZONTAL EN LA PÁGINA */
 html, body {
     width: 100%;
     max-width: 100%;
     overflow-x: hidden !important;
 }
 
-/* 3. ESTRUCTURA DEL SIDEBAR (Fix de 100vw a 100%) */
 .sidebar {
     position: fixed;
     top: 0;
     right: 0;
     height: 100vh;
     width: 32rem;
-    max-width: 100%; /* Cambiado de 100vw a 100% para evitar scroll fantasma */
+    max-width: 100%; 
     background-color: #212121;
     padding: 2.5rem 2rem;
     z-index: 1000;
     
-    /* Layout con Grid */
     display: grid;
     grid-template-rows: auto 1fr;
     gap: 1.5rem;
 
-    /* Oculta completamente el sidebar sin afectar la página */
     transform: translateX(100%);
     visibility: hidden;
     pointer-events: none;
@@ -60,7 +55,6 @@ html, body {
     background-color: var(--carmesi, #e63946);
 }
 
-/* --- Tarjeta de Perfil en Grid --- */
 .sidebar-user-card {
     display: grid;
     grid-template-columns: 1fr;
@@ -114,7 +108,6 @@ html, body {
     box-shadow: 0 0 10px rgba(255, 0, 51, 1);
 }
 
-/* --- Enlaces de Navegación en Grid --- */
 .nav-links {
     display: grid;
     grid-template-columns: 1fr;
