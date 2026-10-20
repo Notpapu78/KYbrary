@@ -15,7 +15,7 @@ body {
     background-size: cover;
     background-attachment: fixed;
     font-size: 16px;
-    overflow-x: hidden; /* Evita cualquier desplazamiento horizontal no deseado */
+    overflow-x: hidden;
 }
 
 main {
@@ -28,7 +28,6 @@ main {
     width: 100%;
 }
 
-/* Contenedor principal del perfil centrado estrictamente */
 .profile-container {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -41,7 +40,6 @@ main {
     animation: sessionAppa 0.7s ease-in-out;
 }
 
-/* Animación de entrada */
 @keyframes sessionAppa {
     from {
         opacity: 0;
@@ -53,7 +51,6 @@ main {
     }
 }
 
-/* Tarjeta de usuario */
 .profile-card {
     background: var(--bg-card);
     backdrop-filter: blur(10px);
@@ -69,7 +66,6 @@ main {
     box-sizing: border-box;
 }
 
-/* Avatar */
 .profile-avatar {
     width: 160px;
     height: 160px;
@@ -79,7 +75,6 @@ main {
     box-shadow: 0 0 20px rgba(255, 0, 51, 1);
 }
 
-/* Textos de usuario */
 .user-details h2 {
     margin: 0 0 0.8rem 0;
     font-size: 4rem;
@@ -105,7 +100,6 @@ main {
     border: 1px solid rgba(255, 0, 51, 0.4);
 }
 
-/* Secciones de tablas */
 .profile-container #container-books {
     display: flex;
     flex-direction: column;
@@ -149,7 +143,6 @@ main {
     gap: 0.5rem;
 }
 
-/* Tablas */
 .table-responsive {
     overflow-x: auto;
 }
@@ -173,7 +166,6 @@ th {
     letter-spacing: 0.05em;
 }
 
-/* Badges de estado */
 .status-badge {
     padding: 0.5rem 0.9rem;
     border-radius: 8px;
@@ -200,7 +192,6 @@ th {
     border: 1px solid rgba(76, 175, 80, 0.4);
 }
 
-/* Adaptación estricta a celulares y pantallas pequeñas (320px) */
 @media (max-width: 900px) {
     main {
         padding: 1rem 0.2rem;
